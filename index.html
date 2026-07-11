@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#1B2440">
+  <meta name="description" content="SAYSAY — a daily Filipino history puzzle.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/sun.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700&family=Young+Serif&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <title>SAYSAY — Daily Filipino History Puzzle</title>
+</head>
+<body>
+  <div class="page-shell">
+    <main class="game" id="app" aria-labelledby="game-title">
+      <header class="masthead">
+        <div class="sun-wrap" id="sun" aria-label="0 of 4 groups solved"></div>
+        <div>
+          <h1 id="game-title">SAYSAY</h1>
+          <p class="tagline" data-i18n="tagline">Daily Filipino History Puzzle</p>
+        </div>
+        <button class="icon-button help-button" id="help-button" type="button" aria-label="How to play">?</button>
+      </header>
+
+      <nav class="language-picker" aria-label="Language">
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="tl">FIL</button>
+      </nav>
+
+      <section id="status-region" class="status-region" aria-live="polite"></section>
+      <section id="game-region"></section>
+    </main>
+
+    <aside class="desktop-note" aria-labelledby="about-title">
+      <p class="eyebrow" data-i18n="dailyGame">One puzzle every day</p>
+      <h2 id="about-title" data-i18n="aboutTitle">Find the stories that connect us.</h2>
+      <p data-i18n="aboutBody">Group sixteen people, places, and ideas from Philippine history into four hidden connections.</p>
+      <ol>
+        <li data-i18n="howOne">Select four related tiles.</li>
+        <li data-i18n="howTwo">Submit your connection.</li>
+        <li data-i18n="howThree">Solve all groups before four mistakes.</li>
+      </ol>
+    </aside>
+  </div>
+
+  <dialog id="help-dialog" aria-labelledby="help-title">
+    <form method="dialog">
+      <button class="dialog-close" value="close" aria-label="Close">×</button>
+      <p class="eyebrow">SAYSAY</p>
+      <h2 id="help-title" data-i18n="howToPlay">How to play</h2>
+      <p data-i18n="aboutBody">Group sixteen people, places, and ideas from Philippine history into four hidden connections.</p>
+      <ul>
+        <li data-i18n="howOne">Select four related tiles.</li>
+        <li data-i18n="howTwo">Submit your connection.</li>
+        <li data-i18n="howThree">Solve all groups before four mistakes.</li>
+      </ul>
+    </form>
+  </dialog>
+
+  <dialog id="review-dialog" aria-labelledby="review-title">
+    <form id="review-form">
+      <button class="dialog-close" type="button" data-close-review aria-label="Close">×</button>
+      <p class="eyebrow">SAYSAY</p>
+      <h2 id="review-title" data-i18n="reportTitle">Report an inaccuracy</h2>
+      <p data-i18n="reportIntro">Tell us what may be inaccurate and, if possible, include a reliable source.</p>
+      <label for="review-group" data-i18n="reportGroup">Related group</label>
+      <select id="review-group" name="group"></select>
+      <label for="review-message" data-i18n="reportMessage">What should we review?</label>
+      <textarea id="review-message" name="message" rows="5" required maxlength="1000"></textarea>
+      <label for="review-source" data-i18n="reportSource">Source link (optional)</label>
+      <input id="review-source" name="source" type="url" inputmode="url" placeholder="https://">
+      <button class="share-button" type="submit" data-i18n="sendReport">Share report</button>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+  <script type="module" src="js/ui.js"></script>
+</body>
+</html>

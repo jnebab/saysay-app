@@ -1,0 +1,13 @@
+{
+  "name": "SAYSAY — Daily Filipino History Puzzle",
+  "short_name": "SAYSAY",
+  "description": "Find four hidden connections in Philippine history every day.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#10172C",
+  "theme_color": "#1B2440",
+  "icons": [
+    { "src": "icons/sun.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
