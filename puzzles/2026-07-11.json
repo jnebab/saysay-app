@@ -1,0 +1,165 @@
+{
+  "id": 1,
+  "date": "2026-07-11",
+  "draft": false,
+  "levels": {
+    "easy": [
+      {
+        "difficulty": 1, "color": "g1",
+        "words": ["QUEZON", "OSMEÑA", "ROXAS", "MACAPAGAL"],
+        "name": { "en": "Faces on Philippine banknotes", "tl": "Mga mukha sa perang papel" },
+        "fact": { "en": "These Philippine presidents have appeared on Philippine banknotes.", "tl": "Ang mga pangulong ito ay lumitaw sa perang papel ng Pilipinas." }
+      },
+      {
+        "difficulty": 2, "color": "g2",
+        "words": ["MAYPAGASA", "MAGDALO", "TANGKAD", "LAWIN"],
+        "name": { "en": "Names linked to the Katipunan", "tl": "Mga pangalang kaugnay ng Katipunan" },
+        "fact": { "en": "The Katipunan used symbolic names and organized local councils during the revolution.", "tl": "Gumamit ang Katipunan ng mga sagisag na pangalan at nagtatag ng mga lokal na konseho noong himagsikan." }
+      },
+      {
+        "difficulty": 3, "color": "g3",
+        "words": ["DATU", "TIMAWA", "MAHARLIKA", "ALIPIN"],
+        "name": { "en": "Precolonial social terms", "tl": "Mga katawagang panlipunan bago ang kolonyalismo" },
+        "fact": { "en": "These terms described different roles and ranks in several precolonial Philippine communities.", "tl": "Inilarawan ng mga katawagang ito ang iba’t ibang tungkulin at antas sa ilang pamayanan bago ang kolonyalismo." }
+      },
+      {
+        "difficulty": 4, "color": "g4",
+        "words": ["MALOLOS", "BIAK-NA-BATO", "KAWIT", "BARASOAIN"],
+        "name": { "en": "Places tied to the Philippine Revolution", "tl": "Mga pook na kaugnay ng Himagsikang Pilipino" },
+        "fact": { "en": "Each place is associated with the Philippine Revolution or the First Republic.", "tl": "Ang bawat pook ay kaugnay ng Himagsikang Pilipino o ng Unang Republika." }
+      }
+    ],
+    "medium": [
+      {
+        "difficulty": 1, "color": "g1",
+        "words": ["RIZAL", "DEL PILAR", "LOPEZ JAENA", "PONCE"],
+        "name": { "en": "The Propaganda Movement", "tl": "Kilusang Propaganda" },
+        "fact": { "en": "These Filipino reformists were associated with the Propaganda Movement in Spain.", "tl": "Ang mga repormistang Pilipinong ito ay kaugnay ng Kilusang Propaganda sa Espanya." }
+      },
+      {
+        "difficulty": 2, "color": "g2",
+        "words": ["GOVERNOR-GENERAL", "ALCALDE MAYOR", "GOBERNADORCILLO", "CABEZA DE BARANGAY"],
+        "name": { "en": "Spanish colonial offices", "tl": "Mga tungkulin noong panahon ng Espanyol" },
+        "fact": { "en": "These were positions within the civil administration of the Spanish colonial Philippines.", "tl": "Mga tungkulin ang mga ito sa pamahalaang sibil noong panahon ng kolonyalismong Espanyol." }
+      },
+      {
+        "difficulty": 3, "color": "g3",
+        "words": ["MALOLOS", "1935", "1973", "1987"],
+        "name": { "en": "Philippine constitutions", "tl": "Mga saligang batas ng Pilipinas" },
+        "fact": { "en": "The Malolos, 1935, 1973, and 1987 constitutions mark distinct periods of Philippine government.", "tl": "Ang mga saligang batas ng Malolos, 1935, 1973, at 1987 ay kumakatawan sa iba’t ibang panahon ng pamahalaan." }
+      },
+      {
+        "difficulty": 4, "color": "g4",
+        "words": ["BATAAN", "CORREGIDOR", "LEYTE", "CAPAS"],
+        "name": { "en": "Philippine World War II sites", "tl": "Mga pook ng Ikalawang Digmaang Pandaigdig" },
+        "fact": { "en": "These places are connected to major events in the Philippines during World War II.", "tl": "Ang mga pook na ito ay kaugnay ng mahahalagang pangyayari sa Pilipinas noong Ikalawang Digmaang Pandaigdig." }
+      }
+    ],
+    "hard": [
+      {
+        "difficulty": 1, "color": "g1",
+        "words": ["CEBU", "TONDO", "SULU", "MAGUINDANAO"],
+        "name": { "en": "Precolonial centers of power", "tl": "Mga sentro ng kapangyarihan bago ang kolonyalismo" },
+        "fact": { "en": "These names identify influential polities or centers of trade and authority before Spanish rule.", "tl": "Tinutukoy ng mga pangalang ito ang mahahalagang pamayanan o sentro ng kalakalan at kapangyarihan bago ang pamumunong Espanyol." }
+      },
+      {
+        "difficulty": 2, "color": "g2",
+        "words": ["GABRIELA SILANG", "MELCHORA AQUINO", "GREGORIA DE JESUS", "TRINIDAD TECSON"],
+        "name": { "en": "Women of resistance and revolution", "tl": "Kababaihan ng paglaban at himagsikan" },
+        "fact": { "en": "These women are remembered for leadership or support in resistance and revolutionary movements.", "tl": "Ginugunita ang mga babaeng ito sa kanilang pamumuno o pagtulong sa mga kilusan ng paglaban at himagsikan." }
+      },
+      {
+        "difficulty": 3, "color": "g3",
+        "words": ["BUTUAN", "TABON", "KALINGA", "CALLAO"],
+        "name": { "en": "Philippine archaeological sites", "tl": "Mga pook arkeolohiko sa Pilipinas" },
+        "fact": { "en": "Archaeological discoveries at these places contribute to the study of the Philippine past.", "tl": "Nakatutulong ang mga tuklas arkeolohiko sa mga pook na ito sa pag-aaral ng nakaraan ng Pilipinas." }
+      },
+      {
+        "difficulty": 4, "color": "g4",
+        "words": ["AMORSOLO", "EDADES", "OCAMPO", "JOYA"],
+        "name": { "en": "National Artists for visual arts", "tl": "Mga Pambansang Alagad ng Sining sa sining biswal" },
+        "fact": { "en": "Fernando Amorsolo, Victorio Edades, Hernando Ocampo, and José Joya were named National Artists for Visual Arts.", "tl": "Sina Fernando Amorsolo, Victorio Edades, Hernando Ocampo, at José Joya ay kinilalang Pambansang Alagad ng Sining sa Sining Biswal." }
+      }
+    ]
+  },
+  "bonusLevels": {
+    "easy": [
+      {
+        "difficulty": 1, "color": "g1",
+        "words": ["SAMPAGUITA", "NARRA", "CARABAO", "PHILIPPINE EAGLE"],
+        "name": { "en": "National symbols of the Philippines", "tl": "Mga pambansang sagisag ng Pilipinas" },
+        "fact": { "en": "These are widely recognized national symbols of the Philippines.", "tl": "Kinikilala ang mga ito bilang mga pambansang sagisag ng Pilipinas." }
+      },
+      {
+        "difficulty": 2, "color": "g2",
+        "words": ["SULU SEA", "SIBUYAN SEA", "VISAYAN SEA", "BOHOL SEA"],
+        "name": { "en": "Seas within the Philippine archipelago", "tl": "Mga dagat sa loob ng kapuluan ng Pilipinas" },
+        "fact": { "en": "These seas lie among the islands of the Philippine archipelago.", "tl": "Matatagpuan ang mga dagat na ito sa pagitan ng mga pulo ng kapuluan ng Pilipinas." }
+      },
+      {
+        "difficulty": 3, "color": "g3",
+        "words": ["RIZAL", "BONIFACIO", "MABINI", "DEL PILAR"],
+        "name": { "en": "Figures of reform and revolution", "tl": "Mga personalidad ng reporma at himagsikan" },
+        "fact": { "en": "These Filipinos played prominent roles in reform or revolutionary movements against Spanish rule.", "tl": "May mahahalagang papel ang mga Pilipinong ito sa reporma o himagsikan laban sa pamumunong Espanyol." }
+      },
+      {
+        "difficulty": 4, "color": "g4",
+        "words": ["MANILA", "CEBU", "ILOILO", "VIGAN"],
+        "name": { "en": "Historic Philippine cities", "tl": "Mga makasaysayang lungsod ng Pilipinas" },
+        "fact": { "en": "Each city has played an important role in Philippine trade, government, or cultural history.", "tl": "May mahalagang papel ang bawat lungsod sa kalakalan, pamahalaan, o kasaysayang pangkultura ng Pilipinas." }
+      }
+    ],
+    "medium": [
+      {
+        "difficulty": 1, "color": "g1",
+        "words": ["LA SOLIDARIDAD", "KALAYAAN", "EL RENACIMIENTO", "LA INDEPENDENCIA"],
+        "name": { "en": "Historic Philippine newspapers", "tl": "Mga makasaysayang pahayagan" },
+        "fact": { "en": "These publications carried reformist, revolutionary, or nationalist writing during key periods of Philippine history.", "tl": "Naglathala ang mga ito ng mga sulating repormista, rebolusyonaryo, o makabayan sa mahahalagang panahon ng kasaysayan." }
+      },
+      {
+        "difficulty": 2, "color": "g2",
+        "words": ["LAPU-LAPU", "DIEGO SILANG", "SULTAN KUDARAT", "DAGOHOY"],
+        "name": { "en": "Leaders of resistance", "tl": "Mga pinuno ng paglaban" },
+        "fact": { "en": "These leaders are associated with resistance to foreign or colonial rule in different regions and centuries.", "tl": "Kaugnay ang mga pinunong ito ng paglaban sa dayuhan o kolonyal na pamumuno sa iba’t ibang rehiyon at panahon." }
+      },
+      {
+        "difficulty": 3, "color": "g3",
+        "words": ["AGUINALDO", "BONIFACIO", "JACINTO", "MABINI"],
+        "name": { "en": "Revolutionary leaders and thinkers", "tl": "Mga pinuno at palaisip ng himagsikan" },
+        "fact": { "en": "These figures helped shape the Philippine Revolution and its political ideas.", "tl": "Tumulong ang mga personalidad na ito sa paghubog ng Himagsikang Pilipino at mga kaisipang pampolitika nito." }
+      },
+      {
+        "difficulty": 4, "color": "g4",
+        "words": ["PACT OF BIAK-NA-BATO", "TREATY OF PARIS", "TREATY OF MANILA", "BATES AGREEMENT"],
+        "name": { "en": "Agreements in Philippine history", "tl": "Mga kasunduan sa kasaysayan ng Pilipinas" },
+        "fact": { "en": "These agreements affected sovereignty, conflict, or political relations in the Philippines.", "tl": "Nakaapekto ang mga kasunduang ito sa soberanya, tunggalian, o ugnayang pampolitika sa Pilipinas." }
+      }
+    ],
+    "hard": [
+      {
+        "difficulty": 1, "color": "g1",
+        "words": ["LAGUNA COPPERPLATE", "BOXER CODEX", "DOCTRINA CHRISTIANA", "CALATAGAN POT"],
+        "name": { "en": "Early Philippine historical sources", "tl": "Mga sinaunang batis ng kasaysayan" },
+        "fact": { "en": "These artifacts or texts are studied as sources for early Philippine society, language, and culture.", "tl": "Pinag-aaralan ang mga artifact o tekstong ito bilang batis tungkol sa sinaunang lipunan, wika, at kultura." }
+      },
+      {
+        "difficulty": 2, "color": "g2",
+        "words": ["ANTONIO LUNA", "GREGORIO DEL PILAR", "LICERIO GERONIMO", "MARIANO NORIEL"],
+        "name": { "en": "Generals of the Philippine Revolution", "tl": "Mga heneral ng Himagsikang Pilipino" },
+        "fact": { "en": "These military leaders served revolutionary forces during the struggle for Philippine independence.", "tl": "Naglingkod ang mga pinunong militar na ito sa mga puwersang rebolusyonaryo sa pakikibaka para sa kalayaan." }
+      },
+      {
+        "difficulty": 3, "color": "g3",
+        "words": ["BAYBAYIN", "KULITAN", "HANUNÓO", "BUHID"],
+        "name": { "en": "Philippine writing systems", "tl": "Mga sistema ng pagsulat sa Pilipinas" },
+        "fact": { "en": "These are indigenous writing systems used historically or continuously by Philippine communities.", "tl": "Mga katutubong sistema ng pagsulat ang mga ito na ginamit noon o patuloy na ginagamit ng mga pamayanan sa Pilipinas." }
+      },
+      {
+        "difficulty": 4, "color": "g4",
+        "words": ["BALANGAY", "KARAKOA", "VINTA", "PARAW"],
+        "name": { "en": "Traditional Philippine watercraft", "tl": "Mga tradisyonal na sasakyang-pandagat" },
+        "fact": { "en": "These names refer to traditional boats associated with different Philippine maritime communities.", "tl": "Tumutukoy ang mga pangalang ito sa mga tradisyonal na bangka ng iba’t ibang pamayanang pandagat sa Pilipinas." }
+      }
+    ]
+  }
+}
