@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { adaptiveGroups, buildSetPlan, createGame, classifyGuess, groupsFromIds, guessEmojis, setKey, submitGuess, updateStats, validatePuzzle } from "../js/game.js";
+import { adaptiveGroups, buildGroupCatalog, buildSetPlan, createGame, classifyGuess, groupsFromIds, guessEmojis, setKey, submitGuess, updateStats, validatePuzzle } from "../js/game.js";
 import { readFile } from "node:fs/promises";
 
 const puzzle = JSON.parse(await readFile(new URL("../puzzles/2026-07-11.json", import.meta.url)));
@@ -17,25 +17,27 @@ assert.ok(rank(adaptiveGroups(puzzle, 17, 0, plan)) <= rank(adaptiveGroups(puzzl
 assert.ok(rank(adaptiveGroups(puzzle, 17, 3, plan)) <= rank(adaptiveGroups(puzzle, 17, 6, plan)));
 
 // No dealt group of 4 ever repeats within a day, whether boards are survived or
-// swapped away. The 24-group bank yields six fully group-unique grids; grid 7
-// (bank exhausted) still deals a valid, never-before-dealt board.
-for (const streak of [0, 3, 6]) {
+// swapped away. The bank yields catalog/4 fully group-unique grids; the grid after
+// that (bank exhausted) still deals a valid, never-before-dealt board.
+const bankGrids = buildGroupCatalog(puzzle).length / 4;
+assert.equal(bankGrids, 25, "the daily bank should support 25 unique grids");
+for (const streak of [0, 6]) {
   for (const survive of [false, true]) {
     const survivedWordSets = [];
     const usedSetKeys = [];
     const seenGroups = new Set();
-    for (let round = 0; round < 7; round += 1) {
+    for (let round = 0; round < bankGrids + 1; round += 1) {
       const groups = adaptiveGroups(puzzle, round, streak, plan, { survivedWordSets, usedSetKeys });
       const words = groups.flatMap((group) => group.words);
       assert.equal(new Set(words).size, 16);
       const key = setKey(groups.map((group) => group.id));
       assert.ok(!usedSetKeys.includes(key), `round ${round} deals an identical board`);
-      if (round < 6) for (const group of groups) assert.ok(!seenGroups.has(group.id), `streak ${streak} survive ${survive}: round ${round} repeats group ${group.id}`);
+      if (round < bankGrids) for (const group of groups) assert.ok(!seenGroups.has(group.id), `streak ${streak} survive ${survive}: round ${round} repeats group ${group.id}`);
       groups.forEach((group) => seenGroups.add(group.id));
       usedSetKeys.push(key);
       if (survive) survivedWordSets.push(words);
     }
-    assert.equal(seenGroups.size, 24, "six grids should consume the whole group bank");
+    assert.equal(seenGroups.size, bankGrids * 4, `${bankGrids} grids should consume the whole group bank`);
   }
 }
 

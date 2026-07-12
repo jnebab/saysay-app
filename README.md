@@ -4,7 +4,7 @@ A responsive, mobile-first daily Filipino history puzzle. SAYSAY launches as one
 
 The app generates a deterministic catalog of 1,000 conflict-free sets from its reviewed history-group bank. A player starts with one **New Full Set** try. Replacing a set spends one try, and every two correctly solved groups earns another try. Set selection becomes progressively harder as the player’s successful streak grows; difficulty is intentionally not exposed as a manual setting.
 
-Every grid dealt in a day is unique down to the group: a group of 4 blocks that has appeared on any earlier grid that day — won, lost, or swapped away — is never dealt again, so the day's 24-group bank yields six fully distinct grids before any reuse is possible. Selection looks ahead so an early pick never strands conflicting groups and cuts the day short. On top of that, no block from a set the player survived (won) reappears in later sets, with that history kept in local storage across days (last 12 survived boards). When the bank cannot satisfy every constraint, the oldest history is forgiven first and a never-before-dealt board is still guaranteed.
+Every grid dealt in a day is unique down to the group: a group of 4 blocks that has appeared on any earlier grid that day — won, lost, or swapped away — is never dealt again. With the standard 24 groups plus the optional `extraGroups` bank (76 more), a day carries 100 groups, yielding **25 fully distinct grids** before any reuse is possible. Selection looks ahead so an early pick never strands conflicting groups and cuts the day short. On top of that, no block from a set the player survived (won) reappears in later sets, with that history kept in local storage across days (last 12 survived boards). When the bank cannot satisfy every constraint, the oldest history is forgiven first and a never-before-dealt board is still guaranteed.
 
 Players can use **Report inaccurate information** to prepare a contextual content report. Because v0.1 has no backend, the report opens the device share sheet and falls back to copying the report for sending through the user’s preferred channel.
 
@@ -26,7 +26,8 @@ Open `http://localhost:8000`. ES modules, puzzle fetches, and the service worker
 4. Add exactly four groups to each level, with difficulties 1–4 and colors `g1`–`g4`.
 5. Add exactly four unique words to each group. All sixteen words within a level must be unique.
 6. Add English and Filipino group names and facts.
-7. Add the puzzle to `puzzles/index.json`. Set `draft` to `false` only after editorial review.
+7. Optionally add an `extraGroups` array to deepen the day's bank: flat groups (no color/difficulty — those are assigned at deal time) each with a `level` of `easy`, `medium`, or `hard`, 4 unique words, and bilingual `name`/`fact`. The array length must be a multiple of 4. Each 4 extra groups buys one more guaranteed-unique grid: 24 + 76 extras = 25 grids.
+8. Add the puzzle to `puzzles/index.json`. Set `draft` to `false` only after editorial review.
 
 Difficulty/share mapping:
 

@@ -110,7 +110,11 @@ export function validatePuzzle(puzzle, expectedDate) {
       && colors.join() === GROUP_ORDER.join()
       && difficulties.join() === "1,2,3,4";
   };
-  return ["easy", "medium", "hard"].every((level) => validLevel(puzzle.levels[level]) && validLevel(puzzle.bonusLevels?.[level]));
+  const extra = puzzle.extraGroups ?? [];
+  const validExtra = Array.isArray(extra) && extra.length % 4 === 0
+    && extra.every((group) => group.words?.length === 4 && new Set(group.words).size === 4
+      && group.name?.en && group.fact?.en && LEVEL_RANK[group.level] !== undefined);
+  return validExtra && ["easy", "medium", "hard"].every((level) => validLevel(puzzle.levels[level]) && validLevel(puzzle.bonusLevels?.[level]));
 }
 
 export function buildGroupCatalog(puzzle) {
@@ -122,22 +126,55 @@ export function buildGroupCatalog(puzzle) {
       });
     }
   }
+  (puzzle.extraGroups || []).forEach((group, index) => {
+    catalog.push({ ...group, id: `extra-${index}`, rank: LEVEL_RANK[group.level] });
+  });
   return catalog;
+}
+
+function mulberry32(seed) {
+  let state = seed >>> 0;
+  return () => {
+    state = (state + 0x6d2b79f5) >>> 0;
+    let t = state;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
 }
 
 export function buildSetPlan(puzzle, count = 1000) {
   const catalog = buildGroupCatalog(puzzle);
   const candidates = [];
-  for (let a = 0; a < catalog.length - 3; a += 1) {
-    for (let b = a + 1; b < catalog.length - 2; b += 1) {
-      for (let c = b + 1; c < catalog.length - 1; c += 1) {
-        for (let d = c + 1; d < catalog.length; d += 1) {
-          const groups = [catalog[a], catalog[b], catalog[c], catalog[d]];
-          const words = groups.flatMap((group) => group.words);
-          if (new Set(words).size !== 16) continue;
-          candidates.push({ ids: groups.map((group) => group.id), score: groups.reduce((sum, group) => sum + group.rank, 0) });
+  const pushCandidate = (groups) => {
+    if (new Set(groups.flatMap((group) => group.words)).size !== 16) return;
+    candidates.push({ ids: groups.map((group) => group.id), score: groups.reduce((sum, group) => sum + group.rank, 0) });
+  };
+  if (catalog.length <= 32) {
+    for (let a = 0; a < catalog.length - 3; a += 1) {
+      for (let b = a + 1; b < catalog.length - 2; b += 1) {
+        for (let c = b + 1; c < catalog.length - 1; c += 1) {
+          for (let d = c + 1; d < catalog.length; d += 1) {
+            pushCandidate([catalog[a], catalog[b], catalog[c], catalog[d]]);
+          }
         }
       }
+    }
+  } else {
+    // Enumerating every combination of a large bank is too slow on load, so draw a
+    // deterministic sample instead. The seed is fixed, so every device builds the
+    // same plan for the same puzzle.
+    const random = mulberry32(catalog.length * 2654435761 + count);
+    const seen = new Set();
+    const target = count * 4;
+    for (let attempt = 0; attempt < target * 40 && candidates.length < target; attempt += 1) {
+      const picks = new Set();
+      while (picks.size < 4) picks.add(Math.floor(random() * catalog.length));
+      const indices = [...picks].sort((left, right) => left - right);
+      const key = indices.join("|");
+      if (seen.has(key)) continue;
+      seen.add(key);
+      pushCandidate(indices.map((index) => catalog[index]));
     }
   }
   candidates.sort((left, right) => left.score - right.score || left.ids.join().localeCompare(right.ids.join()));
@@ -203,9 +240,13 @@ export function adaptiveGroups(puzzle, setNumber, streak, plan = buildSetPlan(pu
   const poolWithout = (usedGroups, ids) => catalog.filter((group) => !usedGroups.has(group.id) && !ids.includes(group.id)).map((group) => group.id);
 
   // Exhaustive search over every combination of unused groups, so a conflict-free
-  // board is found whenever one exists even if the sampled plan missed it.
-  const searchPool = (usedGroups, fits) => {
-    const pool = catalog.filter((group) => !usedGroups.has(group.id)).map((group) => group.id);
+  // board is found whenever one exists even if the sampled plan missed it. Groups
+  // carrying an excluded word can never appear in a fitting board, so they are
+  // dropped before combinations are enumerated.
+  const searchPool = (usedGroups, excluded, fits) => {
+    const pool = catalog
+      .filter((group) => !usedGroups.has(group.id) && group.words.every((word) => !excluded.has(word)))
+      .map((group) => group.id);
     for (let a = 0; a < pool.length - 3; a += 1) {
       for (let b = a + 1; b < pool.length - 2; b += 1) {
         for (let c = b + 1; c < pool.length - 1; c += 1) {
@@ -231,7 +272,7 @@ export function adaptiveGroups(puzzle, setNumber, streak, plan = buildSetPlan(pu
         const excluded = new Set(survivedWordSets.slice(dropWords).flat());
         const fits = (candidate) => valid(candidate, usedGroups, excluded)
           && (!lookahead || canPartition(poolWithout(usedGroups, candidate)));
-        ids = candidates.find(fits) || searchPool(usedGroups, fits);
+        ids = candidates.find(fits) || searchPool(usedGroups, excluded, fits);
       }
       if (ids) break;
     }

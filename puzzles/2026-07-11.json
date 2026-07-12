@@ -162,4 +162,1299 @@
       }
     ]
   }
+,
+  "extraGroups": [
+    {
+      "level": "easy",
+      "words": [
+        "TAAL",
+        "MAYON",
+        "PINATUBO",
+        "KANLAON"
+      ],
+      "name": {
+        "en": "Volcanoes in Philippine history",
+        "tl": "Mga bulkan sa kasaysayan ng Pilipinas"
+      },
+      "fact": {
+        "en": "Eruptions of these volcanoes, from Mayon in 1814 to Pinatubo in 1991, marked Philippine history.",
+        "tl": "Ang mga pagsabog ng mga bulkang ito, mula sa Mayon noong 1814 hanggang sa Pinatubo noong 1991, ay nag-iwan ng bakas sa kasaysayan."
+      }
+    },
+    {
+      "level": "easy",
+      "words": [
+        "TINIKLING",
+        "CARIÑOSA",
+        "SINGKIL",
+        "PANDANGGO"
+      ],
+      "name": {
+        "en": "Traditional Filipino dances",
+        "tl": "Mga katutubong sayaw ng Pilipinas"
+      },
+      "fact": {
+        "en": "These folk dances are performed in festivals and cultural presentations across the country.",
+        "tl": "Itinatanghal ang mga katutubong sayaw na ito sa mga pista at palatanghal-kultural sa buong bansa."
+      }
+    },
+    {
+      "level": "easy",
+      "words": [
+        "ATI-ATIHAN",
+        "SINULOG",
+        "MORIONES",
+        "PAHIYAS"
+      ],
+      "name": {
+        "en": "Festivals with deep roots",
+        "tl": "Mga pistang may malalim na ugat"
+      },
+      "fact": {
+        "en": "These festivals grew from centuries-old religious and community traditions.",
+        "tl": "Nag-ugat ang mga pistang ito sa daan-taóng tradisyong panrelihiyon at pampamayanan."
+      }
+    },
+    {
+      "level": "easy",
+      "words": [
+        "TAGALOG",
+        "CEBUANO",
+        "ILOCANO",
+        "HILIGAYNON"
+      ],
+      "name": {
+        "en": "Major Philippine languages",
+        "tl": "Mga pangunahing wika ng Pilipinas"
+      },
+      "fact": {
+        "en": "These are among the most widely spoken native languages of the Philippines.",
+        "tl": "Kabilang ang mga ito sa mga katutubong wikang may pinakamaraming tagapagsalita sa Pilipinas."
+      }
+    },
+    {
+      "level": "easy",
+      "words": [
+        "ADOBO",
+        "SINIGANG",
+        "LECHON",
+        "KARE-KARE"
+      ],
+      "name": {
+        "en": "Heritage dishes",
+        "tl": "Mga pamanang putahe"
+      },
+      "fact": {
+        "en": "These dishes are long-standing staples of Filipino cooking and celebration.",
+        "tl": "Matagal nang bahagi ng lutuing Pilipino at ng mga pagdiriwang ang mga putaheng ito."
+      }
+    },
+    {
+      "level": "easy",
+      "words": [
+        "JEEPNEY",
+        "SALAKOT",
+        "SUNGKA",
+        "BAKYA"
+      ],
+      "name": {
+        "en": "Everyday Filipino icons",
+        "tl": "Mga pang-araw-araw na sagisag na Pilipino"
+      },
+      "fact": {
+        "en": "These everyday objects became widely recognized symbols of Filipino life.",
+        "tl": "Naging kilalang sagisag ng pamumuhay Pilipino ang mga pang-araw-araw na bagay na ito."
+      }
+    },
+    {
+      "level": "easy",
+      "words": [
+        "BAHAY KUBO",
+        "BAHAY NA BATO",
+        "TOROGAN",
+        "BALE"
+      ],
+      "name": {
+        "en": "Traditional dwellings",
+        "tl": "Mga tradisyonal na tahanan"
+      },
+      "fact": {
+        "en": "These house forms sheltered Filipino communities in different regions and eras.",
+        "tl": "Ang mga anyong ito ng bahay ay tirahan ng mga pamayanang Pilipino sa iba't ibang rehiyon at panahon."
+      }
+    },
+    {
+      "level": "easy",
+      "words": [
+        "ASWANG",
+        "KAPRE",
+        "TIKBALANG",
+        "MANANANGGAL"
+      ],
+      "name": {
+        "en": "Creatures of Philippine folklore",
+        "tl": "Mga nilalang ng kuwentong-bayan"
+      },
+      "fact": {
+        "en": "Stories of these creatures have been told in Philippine communities for generations.",
+        "tl": "Sali't salinlahi nang ikinukuwento ang mga nilalang na ito sa mga pamayanang Pilipino."
+      }
+    },
+    {
+      "level": "easy",
+      "words": [
+        "QUIRINO",
+        "MAGSAYSAY",
+        "GARCIA",
+        "MARCOS"
+      ],
+      "name": {
+        "en": "Presidents after World War II",
+        "tl": "Mga pangulo pagkatapos ng Ikalawang Digmaang Pandaigdig"
+      },
+      "fact": {
+        "en": "These men served as presidents of the Philippines in the decades after the war.",
+        "tl": "Naglingkod bilang pangulo ng Pilipinas ang mga ito sa mga dekada pagkatapos ng digmaan."
+      }
+    },
+    {
+      "level": "easy",
+      "words": [
+        "PASIG",
+        "CAGAYAN",
+        "AGUSAN",
+        "LAGUNA DE BAY"
+      ],
+      "name": {
+        "en": "Historic waterways",
+        "tl": "Mga makasaysayang anyong-tubig"
+      },
+      "fact": {
+        "en": "These rivers and lakes served as lifelines of settlement and trade through Philippine history.",
+        "tl": "Naging daluyan ng paninirahan at kalakalan ang mga ilog at lawang ito sa kasaysayan ng Pilipinas."
+      }
+    },
+    {
+      "level": "easy",
+      "words": [
+        "UST",
+        "ATENEO",
+        "LETRAN",
+        "SAN CARLOS"
+      ],
+      "name": {
+        "en": "Centuries-old schools",
+        "tl": "Mga paaralang daan-taón na ang edad"
+      },
+      "fact": {
+        "en": "These schools trace their origins to the Spanish colonial period and educated many historical figures.",
+        "tl": "Nag-ugat ang mga paaralang ito sa panahon ng Espanyol at dito nag-aral ang maraming makasaysayang personalidad."
+      }
+    },
+    {
+      "level": "easy",
+      "words": [
+        "EDSA",
+        "CAMP CRAME",
+        "CAMP AGUINALDO",
+        "MALACAÑANG"
+      ],
+      "name": {
+        "en": "Places of People Power 1986",
+        "tl": "Mga pook ng People Power 1986"
+      },
+      "fact": {
+        "en": "These places figured prominently in the People Power Revolution of February 1986.",
+        "tl": "Naging tampok ang mga pook na ito sa Himagsikang People Power noong Pebrero 1986."
+      }
+    },
+    {
+      "level": "easy",
+      "words": [
+        "DARNA",
+        "DYESEBEL",
+        "KENKOY",
+        "PANDAY"
+      ],
+      "name": {
+        "en": "Classic komiks characters",
+        "tl": "Mga klasikong tauhan ng komiks"
+      },
+      "fact": {
+        "en": "These characters from Philippine komiks became enduring icons of popular culture.",
+        "tl": "Naging tanyag na bahagi ng kulturang popular ang mga tauhang ito mula sa komiks."
+      }
+    },
+    {
+      "level": "easy",
+      "words": [
+        "BARO'T SAYA",
+        "TERNO",
+        "MALONG",
+        "KIMONA"
+      ],
+      "name": {
+        "en": "Traditional attire",
+        "tl": "Mga tradisyonal na kasuotan"
+      },
+      "fact": {
+        "en": "These garments are traditional forms of Filipino dress from different regions.",
+        "tl": "Mga tradisyonal na kasuotang Pilipino mula sa iba't ibang rehiyon ang mga ito."
+      }
+    },
+    {
+      "level": "easy",
+      "words": [
+        "BAYANIHAN",
+        "UTANG NA LOOB",
+        "PAKIKISAMA",
+        "HIYA"
+      ],
+      "name": {
+        "en": "Filipino social values",
+        "tl": "Mga pagpapahalagang panlipunan"
+      },
+      "fact": {
+        "en": "These concepts are often cited to describe traditional Filipino social values.",
+        "tl": "Madalas banggitin ang mga konseptong ito upang ilarawan ang tradisyonal na pagpapahalagang Pilipino."
+      }
+    },
+    {
+      "level": "easy",
+      "words": [
+        "BERNARDO CARPIO",
+        "MARIA MAKILING",
+        "JUAN TAMAD",
+        "MALAKAS AT MAGANDA"
+      ],
+      "name": {
+        "en": "Figures of folklore",
+        "tl": "Mga tauhan ng kuwentong-bayan"
+      },
+      "fact": {
+        "en": "These legendary figures come from Philippine folk stories passed down through generations.",
+        "tl": "Mula sa mga kuwentong-bayan na ipinasa ng mga salinlahi ang mga maalamat na tauhang ito."
+      }
+    },
+    {
+      "level": "easy",
+      "words": [
+        "TUBA",
+        "LAMBANOG",
+        "BASI",
+        "TAPUY"
+      ],
+      "name": {
+        "en": "Traditional drinks",
+        "tl": "Mga tradisyonal na inumin"
+      },
+      "fact": {
+        "en": "These traditional drinks have long histories; a tax on basi even sparked a revolt in Ilocos in 1807.",
+        "tl": "May mahabang kasaysayan ang mga tradisyonal na inuming ito; ang buwis sa basi ay nagpasiklab pa ng pag-aalsa sa Ilocos noong 1807."
+      }
+    },
+    {
+      "level": "easy",
+      "words": [
+        "MAGELLAN",
+        "LEGAZPI",
+        "VILLALOBOS",
+        "ELCANO"
+      ],
+      "name": {
+        "en": "Names of Spanish expeditions",
+        "tl": "Mga pangalan ng ekspedisyong Espanyol"
+      },
+      "fact": {
+        "en": "These navigators led or completed Spanish expeditions connected to the Philippines in the 1500s.",
+        "tl": "Pinangunahan o tinapos ng mga nabigador na ito ang mga ekspedisyong Espanyol na kaugnay ng Pilipinas noong dantaon 1500."
+      }
+    },
+    {
+      "level": "easy",
+      "words": [
+        "LUZON",
+        "MINDANAO",
+        "NEGROS",
+        "PALAWAN"
+      ],
+      "name": {
+        "en": "Largest Philippine islands",
+        "tl": "Pinakamalalaking pulo ng Pilipinas"
+      },
+      "fact": {
+        "en": "These are among the largest islands of the Philippine archipelago.",
+        "tl": "Kabilang ang mga ito sa pinakamalalaking pulo ng kapuluan ng Pilipinas."
+      }
+    },
+    {
+      "level": "easy",
+      "words": [
+        "PATINTERO",
+        "LUKSONG TINIK",
+        "PIKO",
+        "TUMBANG PRESO"
+      ],
+      "name": {
+        "en": "Traditional street games",
+        "tl": "Mga tradisyonal na larong-kalye"
+      },
+      "fact": {
+        "en": "These games have been played in Filipino neighborhoods for generations.",
+        "tl": "Sali't salinlahi nang nilalaro ang mga ito sa mga pamayanang Pilipino."
+      }
+    },
+    {
+      "level": "medium",
+      "words": [
+        "TRIBUTO",
+        "POLO",
+        "BANDALA",
+        "CEDULA"
+      ],
+      "name": {
+        "en": "Colonial taxes and forced labor",
+        "tl": "Mga buwis at sapilitang paggawa noong kolonyalismo"
+      },
+      "fact": {
+        "en": "These were burdens imposed on Filipinos during the Spanish colonial period.",
+        "tl": "Mga pasaning ipinataw sa mga Pilipino ang mga ito noong panahon ng kolonyalismong Espanyol."
+      }
+    },
+    {
+      "level": "medium",
+      "words": [
+        "AUGUSTINIANS",
+        "DOMINICANS",
+        "FRANCISCANS",
+        "JESUITS"
+      ],
+      "name": {
+        "en": "Religious orders in colonial Philippines",
+        "tl": "Mga orden relihiyoso noong kolonyalismo"
+      },
+      "fact": {
+        "en": "These religious orders played major roles in evangelization and colonial society.",
+        "tl": "Malaki ang papel ng mga orden relihiyosong ito sa ebanghelisasyon at sa lipunang kolonyal."
+      }
+    },
+    {
+      "level": "medium",
+      "words": [
+        "GOMEZ",
+        "BURGOS",
+        "ZAMORA",
+        "1872"
+      ],
+      "name": {
+        "en": "GomBurZa and the year 1872",
+        "tl": "Ang GomBurZa at ang taóng 1872"
+      },
+      "fact": {
+        "en": "Priests Gomez, Burgos, and Zamora were executed in 1872 after the Cavite Mutiny, stirring Filipino nationalism.",
+        "tl": "Binitay ang mga paring Gomez, Burgos, at Zamora noong 1872 matapos ang Pag-aalsa sa Cavite, na nagpaalab sa nasyonalismong Pilipino."
+      }
+    },
+    {
+      "level": "medium",
+      "words": [
+        "NOLI ME TANGERE",
+        "EL FILIBUSTERISMO",
+        "MI ULTIMO ADIOS",
+        "JUNTO AL PASIG"
+      ],
+      "name": {
+        "en": "Works by Jose Rizal",
+        "tl": "Mga akda ni Jose Rizal"
+      },
+      "fact": {
+        "en": "Rizal wrote these novels, poems, and works that fueled the reform movement.",
+        "tl": "Isinulat ni Rizal ang mga nobela, tula, at akdang ito na nagpasigla sa kilusang reporma."
+      }
+    },
+    {
+      "level": "medium",
+      "words": [
+        "JULIAN FELIPE",
+        "JOSE PALMA",
+        "LUPANG HINIRANG",
+        "MARCHA NACIONAL"
+      ],
+      "name": {
+        "en": "The national anthem",
+        "tl": "Ang pambansang awit"
+      },
+      "fact": {
+        "en": "Julian Felipe composed the music and Jose Palma's poem became the lyrics of the Philippine national anthem.",
+        "tl": "Kinatha ni Julian Felipe ang musika at ang tula ni Jose Palma ang naging titik ng pambansang awit."
+      }
+    },
+    {
+      "level": "medium",
+      "words": [
+        "BINONDO",
+        "QUIAPO",
+        "ERMITA",
+        "MALATE"
+      ],
+      "name": {
+        "en": "Old districts of Manila",
+        "tl": "Mga lumang distrito ng Maynila"
+      },
+      "fact": {
+        "en": "These districts of Manila have histories reaching back to the Spanish colonial period.",
+        "tl": "Ang mga distritong ito ng Maynila ay may kasaysayang umaabot sa panahon ng Espanyol."
+      }
+    },
+    {
+      "level": "medium",
+      "words": [
+        "INTRAMUROS",
+        "FORT SANTIAGO",
+        "FORT PILAR",
+        "FORT SAN PEDRO"
+      ],
+      "name": {
+        "en": "Walls and forts of the Spanish era",
+        "tl": "Mga muog at kuta ng panahon ng Espanyol"
+      },
+      "fact": {
+        "en": "These fortifications defended Spanish colonial settlements across the islands.",
+        "tl": "Ipinagtanggol ng mga kutang ito ang mga pamayanang kolonyal na Espanyol sa kapuluan."
+      }
+    },
+    {
+      "level": "medium",
+      "words": [
+        "LAKANDULA",
+        "RAJAH SULAYMAN",
+        "RAJAH HUMABON",
+        "RAJAH MATANDA"
+      ],
+      "name": {
+        "en": "Rulers at the time of Spanish contact",
+        "tl": "Mga pinuno noong pagdating ng mga Espanyol"
+      },
+      "fact": {
+        "en": "These native rulers led communities in Manila and Cebu when the Spanish arrived.",
+        "tl": "Pinamunuan ng mga katutubong pinunong ito ang mga pamayanan sa Maynila at Cebu nang dumating ang mga Espanyol."
+      }
+    },
+    {
+      "level": "medium",
+      "words": [
+        "TOBACCO",
+        "ABACA",
+        "SUGAR",
+        "INDIGO"
+      ],
+      "name": {
+        "en": "Colonial cash crops",
+        "tl": "Mga pananim na pangkalakal noong kolonyalismo"
+      },
+      "fact": {
+        "en": "These export crops shaped the colonial economy, including the tobacco monopoly of 1782.",
+        "tl": "Hinubog ng mga pananim na pang-eksport na ito ang ekonomiyang kolonyal, kabilang ang monopolyo sa tabako noong 1782."
+      }
+    },
+    {
+      "level": "medium",
+      "words": [
+        "PINAGLABANAN",
+        "BINAKAYAN",
+        "ZAPOTE",
+        "ALAPAN"
+      ],
+      "name": {
+        "en": "Battles of the revolution",
+        "tl": "Mga labanan ng himagsikan"
+      },
+      "fact": {
+        "en": "These battles were fought during the Philippine Revolution; the flag was first unfurled in battle at Alapan in 1898.",
+        "tl": "Naganap ang mga labanang ito sa Himagsikang Pilipino; sa Alapan unang iwinagayway ang watawat sa labanan noong 1898."
+      }
+    },
+    {
+      "level": "medium",
+      "words": [
+        "HUKBALAHAP",
+        "MAKAPILI",
+        "KALIBAPI",
+        "KEMPEITAI"
+      ],
+      "name": {
+        "en": "Organizations of the Japanese occupation",
+        "tl": "Mga samahan noong pananakop ng Hapon"
+      },
+      "fact": {
+        "en": "These armed and political organizations operated in the Philippines during the Japanese occupation.",
+        "tl": "Kumilos ang mga samahang ito sa Pilipinas noong panahon ng pananakop ng mga Hapones."
+      }
+    },
+    {
+      "level": "medium",
+      "words": [
+        "KUNDIMAN",
+        "HARANA",
+        "BALITAW",
+        "KUMINTANG"
+      ],
+      "name": {
+        "en": "Traditional song forms",
+        "tl": "Mga tradisyonal na anyo ng awit"
+      },
+      "fact": {
+        "en": "These song forms carried Filipino sentiment and courtship traditions through the centuries.",
+        "tl": "Dinala ng mga anyong ito ng awit ang damdaming Pilipino at tradisyon ng panliligaw sa mga dantaon."
+      }
+    },
+    {
+      "level": "medium",
+      "words": [
+        "KULINTANG",
+        "KUDYAPI",
+        "GANGSA",
+        "AGUNG"
+      ],
+      "name": {
+        "en": "Indigenous musical instruments",
+        "tl": "Mga katutubong instrumentong pangmusika"
+      },
+      "fact": {
+        "en": "These instruments are played in indigenous musical traditions of the Philippines.",
+        "tl": "Tinutugtog ang mga instrumentong ito sa mga katutubong tradisyong musikal ng Pilipinas."
+      }
+    },
+    {
+      "level": "medium",
+      "words": [
+        "T'NALAK",
+        "PIÑA",
+        "INABEL",
+        "JUSI"
+      ],
+      "name": {
+        "en": "Traditional textiles",
+        "tl": "Mga tradisyonal na tela"
+      },
+      "fact": {
+        "en": "These woven textiles represent weaving traditions from different Philippine communities.",
+        "tl": "Kumakatawan ang mga hinabing telang ito sa mga tradisyon ng paghahabi ng iba't ibang pamayanan."
+      }
+    },
+    {
+      "level": "medium",
+      "words": [
+        "SUPREMO",
+        "BOY GENERAL",
+        "SUBLIME PARALYTIC",
+        "BRAINS OF THE KATIPUNAN"
+      ],
+      "name": {
+        "en": "Monikers of heroes",
+        "tl": "Mga taguri sa mga bayani"
+      },
+      "fact": {
+        "en": "These monikers refer to Bonifacio, Gregorio del Pilar, Mabini, and Jacinto respectively.",
+        "tl": "Tumutukoy ang mga taguring ito kina Bonifacio, Gregorio del Pilar, Mabini, at Jacinto."
+      }
+    },
+    {
+      "level": "medium",
+      "words": [
+        "SARSWELA",
+        "MORO-MORO",
+        "SENAKULO",
+        "BODABIL"
+      ],
+      "name": {
+        "en": "Traditional theater forms",
+        "tl": "Mga tradisyonal na anyo ng dulaan"
+      },
+      "fact": {
+        "en": "These stage forms entertained Filipino audiences before and alongside cinema.",
+        "tl": "Nagbigay-aliw sa mga manonood na Pilipino ang mga anyong pandulaang ito bago at kasabay ng pelikula."
+      }
+    },
+    {
+      "level": "medium",
+      "words": [
+        "BIAG NI LAM-ANG",
+        "HINILAWOD",
+        "DARANGEN",
+        "IBALON"
+      ],
+      "name": {
+        "en": "Philippine epics",
+        "tl": "Mga epikong Pilipino"
+      },
+      "fact": {
+        "en": "These epics preserve the heroic traditions of different Philippine ethnic groups.",
+        "tl": "Iniingatan ng mga epikong ito ang mga tradisyong bayani ng iba't ibang pangkat-etniko."
+      }
+    },
+    {
+      "level": "medium",
+      "words": [
+        "FLORANTE AT LAURA",
+        "IBONG ADARNA",
+        "URBANA AT FELIZA",
+        "PASYON"
+      ],
+      "name": {
+        "en": "Classic literary works",
+        "tl": "Mga klasikong akdang pampanitikan"
+      },
+      "fact": {
+        "en": "These works are landmarks of Philippine literature from the Spanish period.",
+        "tl": "Mga palatandaan ang mga akdang ito ng panitikang Pilipino mula sa panahon ng Espanyol."
+      }
+    },
+    {
+      "level": "medium",
+      "words": [
+        "BATANGAS",
+        "BULACAN",
+        "PAMPANGA",
+        "TARLAC"
+      ],
+      "name": {
+        "en": "Provinces of the flag's eight rays",
+        "tl": "Mga lalawigan ng walong sinag ng watawat"
+      },
+      "fact": {
+        "en": "These are among the eight provinces represented by the rays of the sun on the Philippine flag.",
+        "tl": "Kabilang ang mga ito sa walong lalawigang kinakatawan ng mga sinag ng araw sa watawat."
+      }
+    },
+    {
+      "level": "medium",
+      "words": [
+        "DAPITAN",
+        "HONG KONG",
+        "GUAM",
+        "HAWAII"
+      ],
+      "name": {
+        "en": "Places of exile",
+        "tl": "Mga pook ng pagkakatapon"
+      },
+      "fact": {
+        "en": "Rizal, Aguinaldo, Mabini, and Marcos were each exiled to one of these places.",
+        "tl": "Itinapon sina Rizal, Aguinaldo, Mabini, at Marcos sa isa sa mga pook na ito."
+      }
+    },
+    {
+      "level": "medium",
+      "words": [
+        "REAL",
+        "CUARTO",
+        "CENTIMO",
+        "PESO FUERTE"
+      ],
+      "name": {
+        "en": "Money of the Spanish era",
+        "tl": "Salapi ng panahon ng Espanyol"
+      },
+      "fact": {
+        "en": "These units of money circulated in the Philippines during the Spanish colonial period.",
+        "tl": "Umikot ang mga salaping ito sa Pilipinas noong panahon ng kolonyalismong Espanyol."
+      }
+    },
+    {
+      "level": "medium",
+      "words": [
+        "TEODORA ALONSO",
+        "FRANCISCO MERCADO",
+        "PACIANO",
+        "NARCISA"
+      ],
+      "name": {
+        "en": "Rizal's family",
+        "tl": "Ang pamilya ni Rizal"
+      },
+      "fact": {
+        "en": "These are the mother, father, brother, and one of the sisters of Jose Rizal.",
+        "tl": "Sila ang ina, ama, kapatid na lalaki, at isa sa mga kapatid na babae ni Jose Rizal."
+      }
+    },
+    {
+      "level": "medium",
+      "words": [
+        "ENCOMIENDA",
+        "HACIENDA",
+        "INQUILINO",
+        "KASAMA"
+      ],
+      "name": {
+        "en": "Land and labor systems",
+        "tl": "Mga sistema ng lupa at paggawa"
+      },
+      "fact": {
+        "en": "These terms describe systems of landholding and tenancy in Philippine history.",
+        "tl": "Inilalarawan ng mga katawagang ito ang mga sistema ng pag-aari ng lupa at pagsasaka sa kasaysayan."
+      }
+    },
+    {
+      "level": "medium",
+      "words": [
+        "BABAYLAN",
+        "KATALONAN",
+        "ALBULARYO",
+        "HILOT"
+      ],
+      "name": {
+        "en": "Healers and spiritual guides",
+        "tl": "Mga manggagamot at gabay-espirituwal"
+      },
+      "fact": {
+        "en": "These roles served as healers and spiritual leaders in Filipino communities.",
+        "tl": "Naglingkod ang mga tungkuling ito bilang manggagamot at pinunong espirituwal sa mga pamayanan."
+      }
+    },
+    {
+      "level": "medium",
+      "words": [
+        "HOMONHON",
+        "LIMASAWA",
+        "SULUAN",
+        "MACTAN"
+      ],
+      "name": {
+        "en": "Islands of the 1521 voyage",
+        "tl": "Mga pulo ng paglalayag noong 1521"
+      },
+      "fact": {
+        "en": "These islands are linked to the Magellan expedition's arrival and end in the Philippines in 1521.",
+        "tl": "Kaugnay ang mga pulong ito ng pagdating at pagwawakas ng ekspedisyon ni Magellan sa Pilipinas noong 1521."
+      }
+    },
+    {
+      "level": "medium",
+      "words": [
+        "RAMOS",
+        "ENRILE",
+        "HONASAN",
+        "JAIME SIN"
+      ],
+      "name": {
+        "en": "Faces of People Power",
+        "tl": "Mga mukha ng People Power"
+      },
+      "fact": {
+        "en": "These figures played prominent roles in the events of the 1986 People Power Revolution.",
+        "tl": "May mahalagang papel ang mga personalidad na ito sa mga pangyayari ng People Power noong 1986."
+      }
+    },
+    {
+      "level": "medium",
+      "words": [
+        "BAHAG",
+        "PUTONG",
+        "TAPIS",
+        "PATADYONG"
+      ],
+      "name": {
+        "en": "Precolonial garments",
+        "tl": "Mga kasuotan bago ang kolonyalismo"
+      },
+      "fact": {
+        "en": "Early accounts describe these garments worn in Philippine communities before and during early colonial times.",
+        "tl": "Inilalarawan ng mga sinaunang salaysay ang mga kasuotang ito sa mga pamayanang Pilipino bago at noong maagang kolonyalismo."
+      }
+    },
+    {
+      "level": "medium",
+      "words": [
+        "KABAN",
+        "GANTA",
+        "CHUPA",
+        "SALOP"
+      ],
+      "name": {
+        "en": "Old market measures",
+        "tl": "Mga lumang panukat sa palengke"
+      },
+      "fact": {
+        "en": "These traditional units measured rice and goods in Philippine markets for generations.",
+        "tl": "Ginamit ang mga tradisyonal na panukat na ito sa bigas at paninda sa mga palengke sa mahabang panahon."
+      }
+    },
+    {
+      "level": "hard",
+      "words": [
+        "PLARIDEL",
+        "LAONG LAAN",
+        "DIMASALANG",
+        "TAGA-ILOG"
+      ],
+      "name": {
+        "en": "Pen names of the propagandists",
+        "tl": "Mga sagisag-panulat ng mga propagandista"
+      },
+      "fact": {
+        "en": "Del Pilar wrote as Plaridel, Rizal as Laong Laan and Dimasalang, and Antonio Luna as Taga-Ilog.",
+        "tl": "Sumulat si del Pilar bilang Plaridel, si Rizal bilang Laong Laan at Dimasalang, at si Antonio Luna bilang Taga-Ilog."
+      }
+    },
+    {
+      "level": "hard",
+      "words": [
+        "JONES LAW",
+        "TYDINGS-MCDUFFIE",
+        "HARE-HAWES-CUTTING",
+        "PHILIPPINE BILL"
+      ],
+      "name": {
+        "en": "American colonial laws",
+        "tl": "Mga batas ng panahon ng Amerikano"
+      },
+      "fact": {
+        "en": "These United States laws shaped Philippine government and the path to independence.",
+        "tl": "Hinubog ng mga batas na ito ng Estados Unidos ang pamahalaang Pilipino at ang landas tungo sa kalayaan."
+      }
+    },
+    {
+      "level": "hard",
+      "words": [
+        "TAFT",
+        "HARRISON",
+        "WOOD",
+        "STIMSON"
+      ],
+      "name": {
+        "en": "American governors-general",
+        "tl": "Mga gobernador-heneral na Amerikano"
+      },
+      "fact": {
+        "en": "These Americans served as civil governors or governors-general of the Philippines.",
+        "tl": "Naglingkod ang mga Amerikanong ito bilang gobernador sibil o gobernador-heneral ng Pilipinas."
+      }
+    },
+    {
+      "level": "hard",
+      "words": [
+        "TIRAD PASS",
+        "BALANGIGA",
+        "PULANG LUPA",
+        "MABITAC"
+      ],
+      "name": {
+        "en": "Battles of the Philippine-American War",
+        "tl": "Mga labanan ng Digmaang Pilipino-Amerikano"
+      },
+      "fact": {
+        "en": "These engagements were fought between Filipino and American forces from 1899 to 1901.",
+        "tl": "Naganap ang mga sagupaang ito sa pagitan ng mga puwersang Pilipino at Amerikano mula 1899 hanggang 1901."
+      }
+    },
+    {
+      "level": "hard",
+      "words": [
+        "OTIS",
+        "LAWTON",
+        "MERRITT",
+        "FUNSTON"
+      ],
+      "name": {
+        "en": "American commanders in the war",
+        "tl": "Mga kumander na Amerikano sa digmaan"
+      },
+      "fact": {
+        "en": "These American officers commanded forces during the Philippine-American War era.",
+        "tl": "Namuno ang mga opisyal na Amerikanong ito ng mga puwersa noong panahon ng Digmaang Pilipino-Amerikano."
+      }
+    },
+    {
+      "level": "hard",
+      "words": [
+        "MACARTHUR",
+        "YAMASHITA",
+        "WAINWRIGHT",
+        "HOMMA"
+      ],
+      "name": {
+        "en": "Commanders of World War II",
+        "tl": "Mga kumander ng Ikalawang Digmaang Pandaigdig"
+      },
+      "fact": {
+        "en": "These generals led American and Japanese forces in the Philippines during World War II.",
+        "tl": "Pinamunuan ng mga heneral na ito ang mga puwersang Amerikano at Hapones sa Pilipinas noong digmaan."
+      }
+    },
+    {
+      "level": "hard",
+      "words": [
+        "BASCO",
+        "ANDA",
+        "CORCUERA",
+        "DASMARIÑAS"
+      ],
+      "name": {
+        "en": "Spanish governors-general",
+        "tl": "Mga gobernador-heneral na Espanyol"
+      },
+      "fact": {
+        "en": "These governors-general led the Spanish colonial government in different centuries.",
+        "tl": "Pinamunuan ng mga gobernador-heneral na ito ang pamahalaang kolonyal na Espanyol sa iba't ibang dantaon."
+      }
+    },
+    {
+      "level": "hard",
+      "words": [
+        "GALLEON",
+        "ACAPULCO",
+        "URDANETA",
+        "TORNAVIAJE"
+      ],
+      "name": {
+        "en": "The galleon trade",
+        "tl": "Ang kalakalang galyon"
+      },
+      "fact": {
+        "en": "The Manila-Acapulco galleon trade followed the return route east across the Pacific charted by Urdaneta in 1565.",
+        "tl": "Sinundan ng kalakalang galyon ng Maynila-Acapulco ang pabalik na rutang pasilangan sa Pasipiko na natunton ni Urdaneta noong 1565."
+      }
+    },
+    {
+      "level": "hard",
+      "words": [
+        "SAN AGUSTIN",
+        "MIAG-AO",
+        "PAOAY",
+        "SANTA MARIA"
+      ],
+      "name": {
+        "en": "Baroque churches of the Philippines",
+        "tl": "Mga simbahang barok ng Pilipinas"
+      },
+      "fact": {
+        "en": "These four churches are inscribed together on the UNESCO World Heritage List.",
+        "tl": "Magkakasamang nakatala ang apat na simbahang ito sa Talaan ng Pamanang Pandaigdig ng UNESCO."
+      }
+    },
+    {
+      "level": "hard",
+      "words": [
+        "BATHALA",
+        "MAYARI",
+        "APOLAKI",
+        "IDIYANALE"
+      ],
+      "name": {
+        "en": "Deities of Tagalog mythology",
+        "tl": "Mga diyos ng mitolohiyang Tagalog"
+      },
+      "fact": {
+        "en": "Early accounts of Tagalog belief describe these deities of creation, moon, sun, and labor.",
+        "tl": "Inilalarawan ng mga sinaunang salaysay ng paniniwalang Tagalog ang mga diyos na ito ng paglikha, buwan, araw, at paggawa."
+      }
+    },
+    {
+      "level": "hard",
+      "words": [
+        "MANUNGGUL",
+        "GOLDEN TARA",
+        "LINGLING-O",
+        "BULUL"
+      ],
+      "name": {
+        "en": "Treasured artifacts",
+        "tl": "Mga mahalagang artifact"
+      },
+      "fact": {
+        "en": "These artifacts are studied as expressions of early Philippine belief and craftsmanship.",
+        "tl": "Pinag-aaralan ang mga artifact na ito bilang kahayagan ng sinaunang paniniwala at kasanayang Pilipino."
+      }
+    },
+    {
+      "level": "hard",
+      "words": [
+        "TAMBLOT",
+        "BANKAW",
+        "SUMUROY",
+        "PALARIS"
+      ],
+      "name": {
+        "en": "Leaders of early revolts",
+        "tl": "Mga pinuno ng mga sinaunang pag-aalsa"
+      },
+      "fact": {
+        "en": "These leaders rose against colonial impositions in the Visayas and Luzon between the 1600s and 1700s.",
+        "tl": "Nag-alsa ang mga pinunong ito laban sa mga pataw na kolonyal sa Visayas at Luzon noong mga dantaon 1600 at 1700."
+      }
+    },
+    {
+      "level": "hard",
+      "words": [
+        "PATERNO",
+        "BUENCAMINO",
+        "CALDERON",
+        "LEGARDA"
+      ],
+      "name": {
+        "en": "Figures of the Malolos Congress",
+        "tl": "Mga personalidad ng Kongreso ng Malolos"
+      },
+      "fact": {
+        "en": "These men served in the Malolos Congress; Calderon drafted much of the Malolos Constitution.",
+        "tl": "Naglingkod ang mga ito sa Kongreso ng Malolos; si Calderon ang pangunahing bumalangkas ng Saligang Batas ng Malolos."
+      }
+    },
+    {
+      "level": "hard",
+      "words": [
+        "TRIAS",
+        "MAKABULOS",
+        "TINIO",
+        "MASCARDO"
+      ],
+      "name": {
+        "en": "Generals of the First Republic",
+        "tl": "Mga heneral ng Unang Republika"
+      },
+      "fact": {
+        "en": "These generals commanded revolutionary forces in different provinces during the struggle for independence.",
+        "tl": "Namuno ang mga heneral na ito ng mga puwersang rebolusyonaryo sa iba't ibang lalawigan sa pakikibaka para sa kalayaan."
+      }
+    },
+    {
+      "level": "hard",
+      "words": [
+        "MADRID",
+        "BERLIN",
+        "LONDON",
+        "GHENT"
+      ],
+      "name": {
+        "en": "Cities in Rizal's Europe",
+        "tl": "Mga lungsod sa Europa ni Rizal"
+      },
+      "fact": {
+        "en": "Rizal studied, wrote, and published in these European cities; the Noli appeared in Berlin and the Fili in Ghent.",
+        "tl": "Nag-aral, sumulat, at naglathala si Rizal sa mga lungsod na ito; sa Berlin lumabas ang Noli at sa Ghent ang Fili."
+      }
+    },
+    {
+      "level": "hard",
+      "words": [
+        "JOAQUIN",
+        "VILLA",
+        "HERNANDEZ",
+        "LUMBERA"
+      ],
+      "name": {
+        "en": "National Artists for Literature",
+        "tl": "Mga Pambansang Alagad ng Sining sa Panitikan"
+      },
+      "fact": {
+        "en": "Nick Joaquin, Jose Garcia Villa, Amado Hernandez, and Bienvenido Lumbera were named National Artists for Literature.",
+        "tl": "Sina Nick Joaquin, Jose Garcia Villa, Amado Hernandez, at Bienvenido Lumbera ay kinilalang Pambansang Alagad ng Sining sa Panitikan."
+      }
+    },
+    {
+      "level": "hard",
+      "words": [
+        "ABELARDO",
+        "SANTIAGO",
+        "MOLINA",
+        "CELERIO"
+      ],
+      "name": {
+        "en": "Celebrated Filipino composers",
+        "tl": "Mga tanyag na kompositor na Pilipino"
+      },
+      "fact": {
+        "en": "These composers and lyricists helped shape Filipino classical and popular music.",
+        "tl": "Tumulong ang mga kompositor at manunulat ng awit na ito sa paghubog ng musikang klasiko at popular ng Pilipinas."
+      }
+    },
+    {
+      "level": "hard",
+      "words": [
+        "BROCKA",
+        "BERNAL",
+        "AVELLANA",
+        "CONDE"
+      ],
+      "name": {
+        "en": "National Artists for Film",
+        "tl": "Mga Pambansang Alagad ng Sining sa Pelikula"
+      },
+      "fact": {
+        "en": "Lino Brocka, Ishmael Bernal, Lamberto Avellana, and Manuel Conde were named National Artists for Film.",
+        "tl": "Sina Lino Brocka, Ishmael Bernal, Lamberto Avellana, at Manuel Conde ay kinilalang Pambansang Alagad ng Sining sa Pelikula."
+      }
+    },
+    {
+      "level": "hard",
+      "words": [
+        "LOCSIN",
+        "NAKPIL",
+        "MAÑOSA",
+        "ZARAGOZA"
+      ],
+      "name": {
+        "en": "National Artists for Architecture",
+        "tl": "Mga Pambansang Alagad ng Sining sa Arkitektura"
+      },
+      "fact": {
+        "en": "Leandro Locsin, Juan Nakpil, Francisco Mañosa, and Jose Maria Zaragoza were named National Artists for Architecture.",
+        "tl": "Sina Leandro Locsin, Juan Nakpil, Francisco Mañosa, at Jose Maria Zaragoza ay kinilalang Pambansang Alagad ng Sining sa Arkitektura."
+      }
+    },
+    {
+      "level": "hard",
+      "words": [
+        "MAYNILA",
+        "ISLAS DEL PONIENTE",
+        "NUEVA CACERES",
+        "NUEVA SEGOVIA"
+      ],
+      "name": {
+        "en": "Old names of places",
+        "tl": "Mga lumang pangalan ng mga pook"
+      },
+      "fact": {
+        "en": "These are earlier names for Manila, the archipelago, Naga, and a city in northern Luzon.",
+        "tl": "Mga sinaunang pangalan ang mga ito ng Maynila, ng kapuluan, ng Naga, at ng isang lungsod sa hilagang Luzon."
+      }
+    },
+    {
+      "level": "hard",
+      "words": [
+        "BOLO",
+        "KRIS",
+        "KAMPILAN",
+        "BARONG"
+      ],
+      "name": {
+        "en": "Traditional blades",
+        "tl": "Mga tradisyonal na patalim"
+      },
+      "fact": {
+        "en": "These blades were used as tools and weapons in different Philippine communities.",
+        "tl": "Ginamit ang mga patalim na ito bilang kasangkapan at sandata sa iba't ibang pamayanang Pilipino."
+      }
+    },
+    {
+      "level": "hard",
+      "words": [
+        "1081",
+        "KBL",
+        "METROCOM",
+        "MASAGANA 99"
+      ],
+      "name": {
+        "en": "Terms of the Martial Law era",
+        "tl": "Mga katawagan ng panahon ng Batas Militar"
+      },
+      "fact": {
+        "en": "Proclamation 1081, the KBL party, the Metrocom police, and Masagana 99 marked the Martial Law period.",
+        "tl": "Ang Proklamasyon 1081, ang partidong KBL, ang pulisyang Metrocom, at ang Masagana 99 ay mga palatandaan ng panahon ng Batas Militar."
+      }
+    },
+    {
+      "level": "hard",
+      "words": [
+        "DEWEY",
+        "MONTOJO",
+        "OLYMPIA",
+        "REINA CRISTINA"
+      ],
+      "name": {
+        "en": "The Battle of Manila Bay",
+        "tl": "Ang Labanan sa Look ng Maynila"
+      },
+      "fact": {
+        "en": "Dewey's flagship Olympia defeated Montojo's squadron, including the Reina Cristina, in May 1898.",
+        "tl": "Ginapi ng plagship ni Dewey na Olympia ang iskuwadron ni Montojo, kabilang ang Reina Cristina, noong Mayo 1898."
+      }
+    },
+    {
+      "level": "hard",
+      "words": [
+        "DATU PUTI",
+        "MARIKUDO",
+        "MADYA-AS",
+        "PANAY"
+      ],
+      "name": {
+        "en": "The Maragtas legend",
+        "tl": "Ang alamat ng Maragtas"
+      },
+      "fact": {
+        "en": "According to the Maragtas legend, Bornean datus led by Datu Puti settled Panay after a pact with Marikudo.",
+        "tl": "Ayon sa alamat ng Maragtas, nanirahan sa Panay ang mga datung Borneano sa pamumuno ni Datu Puti matapos makipagkasundo kay Marikudo."
+      }
+    },
+    {
+      "level": "hard",
+      "words": [
+        "LA LIGA FILIPINA",
+        "ASOCIACION HISPANO-FILIPINA",
+        "COMITE DE PROPAGANDA",
+        "INDIOS BRAVOS"
+      ],
+      "name": {
+        "en": "Organizations of the reform era",
+        "tl": "Mga samahan ng panahon ng reporma"
+      },
+      "fact": {
+        "en": "These organizations supported the campaign for reforms in the late Spanish period.",
+        "tl": "Sinuportahan ng mga samahang ito ang kampanya para sa mga reporma sa huling bahagi ng panahon ng Espanyol."
+      }
+    },
+    {
+      "level": "hard",
+      "words": [
+        "IMUS",
+        "NOVELETA",
+        "BACOOR",
+        "MARAGONDON"
+      ],
+      "name": {
+        "en": "Cavite in the revolution",
+        "tl": "Ang Cavite sa himagsikan"
+      },
+      "fact": {
+        "en": "These Cavite towns witnessed key events of the revolution, including the trial of Bonifacio in Maragondon.",
+        "tl": "Nasaksihan ng mga bayang ito ng Cavite ang mahahalagang pangyayari ng himagsikan, kabilang ang paglilitis kay Bonifacio sa Maragondon."
+      }
+    },
+    {
+      "level": "hard",
+      "words": [
+        "PENINSULARES",
+        "INSULARES",
+        "ILUSTRADO",
+        "PRINCIPALIA"
+      ],
+      "name": {
+        "en": "Colonial social classes",
+        "tl": "Mga uring panlipunan noong kolonyalismo"
+      },
+      "fact": {
+        "en": "These terms described social ranks in the class structure of the Spanish colonial Philippines.",
+        "tl": "Inilarawan ng mga katawagang ito ang mga antas panlipunan sa istrukturang uri ng kolonyal na Pilipinas."
+      }
+    },
+    {
+      "level": "hard",
+      "words": [
+        "KARTILYA",
+        "DEKALOGO",
+        "KATAPUSANG HIBIK",
+        "PAG-IBIG SA TINUBUANG LUPA"
+      ],
+      "name": {
+        "en": "Writings of the Katipunan",
+        "tl": "Mga sulatin ng Katipunan"
+      },
+      "fact": {
+        "en": "Jacinto's Kartilya, Bonifacio's Decalogue, and Bonifacio's poems guided and inspired the Katipunan.",
+        "tl": "Ang Kartilya ni Jacinto, ang Dekalogo ni Bonifacio, at ang mga tula ni Bonifacio ay gumabay at nagbigay-sigla sa Katipunan."
+      }
+    }
+  ]
 }
