@@ -16,27 +16,40 @@ const rank = (groups) => groups.reduce((sum, group) => sum + group.rank, 0);
 assert.ok(rank(adaptiveGroups(puzzle, 17, 0, plan)) <= rank(adaptiveGroups(puzzle, 17, 3, plan)));
 assert.ok(rank(adaptiveGroups(puzzle, 17, 3, plan)) <= rank(adaptiveGroups(puzzle, 17, 6, plan)));
 
-// A survived set's 16 words never appear in the next set, and no set key ever repeats.
+// Words from survived sets never appear in the next set, and no set key ever repeats.
+// When the bank runs out, the oldest survived set is forgiven first, so the most
+// recent survived set stays excluded for as long as any candidate exists.
 for (const streak of [0, 3, 6]) {
-  let survivedWords = [];
+  const survivedWordSets = [];
   const usedSetKeys = [];
+  let fullyDisjointRounds = 0;
   for (let round = 0; round < 6; round += 1) {
-    const groups = adaptiveGroups(puzzle, round, streak, plan, { excludedWords: survivedWords, usedSetKeys });
+    const groups = adaptiveGroups(puzzle, round, streak, plan, { survivedWordSets, usedSetKeys });
     const words = groups.flatMap((group) => group.words);
     assert.equal(new Set(words).size, 16);
-    assert.ok(words.every((word) => !survivedWords.includes(word)), `round ${round} repeats a survived word`);
+    const last = survivedWordSets[survivedWordSets.length - 1] || [];
+    assert.ok(words.every((word) => !last.includes(word)), `round ${round} repeats a word from the last survived set`);
+    const union = new Set(survivedWordSets.flat());
+    if (words.every((word) => !union.has(word))) fullyDisjointRounds += 1;
     const key = setKey(groups.map((group) => group.id));
     assert.ok(!usedSetKeys.includes(key), `round ${round} repeats set ${key}`);
     usedSetKeys.push(key);
-    survivedWords = words;
+    survivedWordSets.push(words);
   }
+  assert.ok(fullyDisjointRounds >= 3, `streak ${streak}: only ${fullyDisjointRounds} rounds avoided all survived words`);
 }
 
-// Even when every word is excluded, selection degrades gracefully to an unseen set.
+// Relaxation drops the oldest survived set first: with an impossible old exclusion,
+// the newest survived set must still be respected.
 const allWords = [...Object.values(puzzle.levels), ...Object.values(puzzle.bonusLevels)].flat().flatMap((group) => group.words);
+const newest = adaptiveGroups(puzzle, 0, 0, plan).flatMap((group) => group.words);
+const relaxed = adaptiveGroups(puzzle, 0, 0, plan, { survivedWordSets: [allWords, newest] });
+assert.ok(relaxed.flatMap((group) => group.words).every((word) => !newest.includes(word)), "relaxation dropped the newest survived set");
+
+// Even when every word is excluded, selection degrades gracefully to an unseen set.
 const seenKeys = [];
 for (let round = 0; round < 3; round += 1) {
-  const groups = adaptiveGroups(puzzle, 0, 0, plan, { excludedWords: allWords, usedSetKeys: seenKeys });
+  const groups = adaptiveGroups(puzzle, 0, 0, plan, { survivedWordSets: [allWords], usedSetKeys: seenKeys });
   assert.equal(groups.length, 4);
   const key = setKey(groups.map((group) => group.id));
   assert.ok(!seenKeys.includes(key));

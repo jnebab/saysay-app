@@ -159,7 +159,7 @@ export function groupsFromIds(puzzle, ids) {
 export function adaptiveGroups(puzzle, setNumber, streak, plan = buildSetPlan(puzzle), history = {}) {
   const catalog = buildGroupCatalog(puzzle);
   const byId = new Map(catalog.map((group) => [group.id, group]));
-  const excludedWords = new Set(history.excludedWords || []);
+  const survivedWordSets = history.survivedWordSets || [];
   const usedSetKeys = new Set(history.usedSetKeys || []);
   const tier = Math.min(2, Math.floor(Math.max(0, streak) / 3));
   const start = Math.floor(plan.length * tier / 3);
@@ -171,9 +171,14 @@ export function adaptiveGroups(puzzle, setNumber, streak, plan = buildSetPlan(pu
     const index = (start + offset + step) % plan.length;
     if (index < start || index >= end) order.push(index);
   }
-  const unused = (ids) => !usedSetKeys.has(setKey(ids));
-  const fresh = (ids) => unused(ids) && ids.every((id) => byId.get(id).words.every((word) => !excludedWords.has(word)));
   const candidates = order.map((index) => plan[index]);
-  const ids = candidates.find(fresh) || candidates.find(unused) || plan[start + offset];
+  const unused = (candidate) => !usedSetKeys.has(setKey(candidate));
+  const disjoint = (candidate, excluded) => candidate.every((id) => byId.get(id).words.every((word) => !excluded.has(word)));
+  let ids = null;
+  for (let dropped = 0; !ids && dropped <= survivedWordSets.length; dropped += 1) {
+    const excluded = new Set(survivedWordSets.slice(dropped).flat());
+    ids = candidates.find((candidate) => unused(candidate) && disjoint(candidate, excluded));
+  }
+  ids = ids || plan[start + offset];
   return ids.map((id, index) => ({ ...byId.get(id), difficulty: index + 1, color: GROUP_ORDER[index] }));
 }
