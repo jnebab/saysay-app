@@ -16,27 +16,27 @@ const rank = (groups) => groups.reduce((sum, group) => sum + group.rank, 0);
 assert.ok(rank(adaptiveGroups(puzzle, 17, 0, plan)) <= rank(adaptiveGroups(puzzle, 17, 3, plan)));
 assert.ok(rank(adaptiveGroups(puzzle, 17, 3, plan)) <= rank(adaptiveGroups(puzzle, 17, 6, plan)));
 
-// Words from survived sets never appear in the next set, and no set key ever repeats.
-// When the bank runs out, the oldest survived set is forgiven first, so the most
-// recent survived set stays excluded for as long as any candidate exists.
+// No dealt group of 4 ever repeats within a day, whether boards are survived or
+// swapped away. The 24-group bank yields six fully group-unique grids; grid 7
+// (bank exhausted) still deals a valid, never-before-dealt board.
 for (const streak of [0, 3, 6]) {
-  const survivedWordSets = [];
-  const usedSetKeys = [];
-  let fullyDisjointRounds = 0;
-  for (let round = 0; round < 6; round += 1) {
-    const groups = adaptiveGroups(puzzle, round, streak, plan, { survivedWordSets, usedSetKeys });
-    const words = groups.flatMap((group) => group.words);
-    assert.equal(new Set(words).size, 16);
-    const last = survivedWordSets[survivedWordSets.length - 1] || [];
-    assert.ok(words.every((word) => !last.includes(word)), `round ${round} repeats a word from the last survived set`);
-    const union = new Set(survivedWordSets.flat());
-    if (words.every((word) => !union.has(word))) fullyDisjointRounds += 1;
-    const key = setKey(groups.map((group) => group.id));
-    assert.ok(!usedSetKeys.includes(key), `round ${round} repeats set ${key}`);
-    usedSetKeys.push(key);
-    survivedWordSets.push(words);
+  for (const survive of [false, true]) {
+    const survivedWordSets = [];
+    const usedSetKeys = [];
+    const seenGroups = new Set();
+    for (let round = 0; round < 7; round += 1) {
+      const groups = adaptiveGroups(puzzle, round, streak, plan, { survivedWordSets, usedSetKeys });
+      const words = groups.flatMap((group) => group.words);
+      assert.equal(new Set(words).size, 16);
+      const key = setKey(groups.map((group) => group.id));
+      assert.ok(!usedSetKeys.includes(key), `round ${round} deals an identical board`);
+      if (round < 6) for (const group of groups) assert.ok(!seenGroups.has(group.id), `streak ${streak} survive ${survive}: round ${round} repeats group ${group.id}`);
+      groups.forEach((group) => seenGroups.add(group.id));
+      usedSetKeys.push(key);
+      if (survive) survivedWordSets.push(words);
+    }
+    assert.equal(seenGroups.size, 24, "six grids should consume the whole group bank");
   }
-  assert.ok(fullyDisjointRounds >= 3, `streak ${streak}: only ${fullyDisjointRounds} rounds avoided all survived words`);
 }
 
 // Relaxation drops the oldest survived set first: with an impossible old exclusion,

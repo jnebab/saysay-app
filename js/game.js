@@ -160,7 +160,8 @@ export function adaptiveGroups(puzzle, setNumber, streak, plan = buildSetPlan(pu
   const catalog = buildGroupCatalog(puzzle);
   const byId = new Map(catalog.map((group) => [group.id, group]));
   const survivedWordSets = history.survivedWordSets || [];
-  const usedSetKeys = new Set(history.usedSetKeys || []);
+  const usedSetKeys = history.usedSetKeys || [];
+  const usedKeySet = new Set(usedSetKeys);
   const tier = Math.min(2, Math.floor(Math.max(0, streak) / 3));
   const start = Math.floor(plan.length * tier / 3);
   const end = Math.floor(plan.length * (tier + 1) / 3);
@@ -172,12 +173,68 @@ export function adaptiveGroups(puzzle, setNumber, streak, plan = buildSetPlan(pu
     if (index < start || index >= end) order.push(index);
   }
   const candidates = order.map((index) => plan[index]);
-  const unused = (candidate) => !usedSetKeys.has(setKey(candidate));
-  const disjoint = (candidate, excluded) => candidate.every((id) => byId.get(id).words.every((word) => !excluded.has(word)));
+  const wordsOf = (ids) => ids.flatMap((id) => byId.get(id).words);
+  const valid = (ids, usedGroups, excluded) => !usedKeySet.has(setKey(ids))
+    && ids.every((id) => !usedGroups.has(id))
+    && wordsOf(ids).every((word) => !excluded.has(word));
+
+  // Whether the given unused groups can still be dealt out as full word-valid
+  // boards, so a pick never strands conflicting groups together.
+  const partitionMemo = new Map();
+  const canPartition = (pool) => {
+    if (pool.length === 0) return true;
+    if (pool.length % 4) return true;
+    const memoKey = pool.join(",");
+    if (partitionMemo.has(memoKey)) return partitionMemo.get(memoKey);
+    const [head, ...rest] = pool;
+    let ok = false;
+    for (let a = 0; a < rest.length - 2 && !ok; a += 1) {
+      for (let b = a + 1; b < rest.length - 1 && !ok; b += 1) {
+        for (let c = b + 1; c < rest.length && !ok; c += 1) {
+          if (new Set(wordsOf([head, rest[a], rest[b], rest[c]])).size !== 16) continue;
+          ok = canPartition(rest.filter((_, index) => index !== a && index !== b && index !== c));
+        }
+      }
+    }
+    partitionMemo.set(memoKey, ok);
+    return ok;
+  };
+
+  const poolWithout = (usedGroups, ids) => catalog.filter((group) => !usedGroups.has(group.id) && !ids.includes(group.id)).map((group) => group.id);
+
+  // Exhaustive search over every combination of unused groups, so a conflict-free
+  // board is found whenever one exists even if the sampled plan missed it.
+  const searchPool = (usedGroups, fits) => {
+    const pool = catalog.filter((group) => !usedGroups.has(group.id)).map((group) => group.id);
+    for (let a = 0; a < pool.length - 3; a += 1) {
+      for (let b = a + 1; b < pool.length - 2; b += 1) {
+        for (let c = b + 1; c < pool.length - 1; c += 1) {
+          for (let d = c + 1; d < pool.length; d += 1) {
+            const ids = [pool[a], pool[b], pool[c], pool[d]];
+            if (new Set(wordsOf(ids)).size === 16 && fits(ids)) return ids;
+          }
+        }
+      }
+    }
+    return null;
+  };
+
+  // Never repeat a dealt group; on top of that, avoid every word from survived
+  // sets. Constraints relax in priority order: survived-word history drops
+  // oldest-first, then the partition lookahead, and dealt groups are forgiven
+  // (oldest boards first) only once the bank is truly exhausted.
   let ids = null;
-  for (let dropped = 0; !ids && dropped <= survivedWordSets.length; dropped += 1) {
-    const excluded = new Set(survivedWordSets.slice(dropped).flat());
-    ids = candidates.find((candidate) => unused(candidate) && disjoint(candidate, excluded));
+  for (let dropKeys = 0; !ids && dropKeys <= usedSetKeys.length; dropKeys += 1) {
+    const usedGroups = new Set(usedSetKeys.slice(dropKeys).flatMap((key) => key.split("|")));
+    for (const lookahead of [true, false]) {
+      for (let dropWords = 0; !ids && dropWords <= survivedWordSets.length; dropWords += 1) {
+        const excluded = new Set(survivedWordSets.slice(dropWords).flat());
+        const fits = (candidate) => valid(candidate, usedGroups, excluded)
+          && (!lookahead || canPartition(poolWithout(usedGroups, candidate)));
+        ids = candidates.find(fits) || searchPool(usedGroups, fits);
+      }
+      if (ids) break;
+    }
   }
   ids = ids || plan[start + offset];
   return ids.map((id, index) => ({ ...byId.get(id), difficulty: index + 1, color: GROUP_ORDER[index] }));
