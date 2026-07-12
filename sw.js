@@ -1,4 +1,4 @@
-const CACHE = "saysay-v6";
+const CACHE = "saysay-v7";
 const SHELL = ["./", "index.html", "css/style.css", "js/game.js", "js/ui.js", "js/i18n.js", "js/storage.js", "puzzles/index.json", "icons/sun.svg", "manifest.webmanifest"];
 
 self.addEventListener("install", (event) => {
