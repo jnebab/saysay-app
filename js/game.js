@@ -145,12 +145,35 @@ export function buildSetPlan(puzzle, count = 1000) {
   return Array.from({ length: count }, (_, index) => candidates[Math.floor(index * (candidates.length - 1) / (count - 1))].ids);
 }
 
-export function adaptiveGroups(puzzle, setNumber, streak, plan = buildSetPlan(puzzle)) {
+export function setKey(ids) {
+  return [...ids].sort().join("|");
+}
+
+export function groupsFromIds(puzzle, ids) {
+  if (!Array.isArray(ids) || ids.length !== 4) return null;
+  const byId = new Map(buildGroupCatalog(puzzle).map((group) => [group.id, group]));
+  if (!ids.every((id) => byId.has(id))) return null;
+  return ids.map((id, index) => ({ ...byId.get(id), difficulty: index + 1, color: GROUP_ORDER[index] }));
+}
+
+export function adaptiveGroups(puzzle, setNumber, streak, plan = buildSetPlan(puzzle), history = {}) {
   const catalog = buildGroupCatalog(puzzle);
   const byId = new Map(catalog.map((group) => [group.id, group]));
+  const excludedWords = new Set(history.excludedWords || []);
+  const usedSetKeys = new Set(history.usedSetKeys || []);
   const tier = Math.min(2, Math.floor(Math.max(0, streak) / 3));
   const start = Math.floor(plan.length * tier / 3);
   const end = Math.floor(plan.length * (tier + 1) / 3);
-  const ids = plan[start + (setNumber % Math.max(1, end - start))];
+  const size = Math.max(1, end - start);
+  const offset = setNumber % size;
+  const order = Array.from({ length: size }, (_, step) => start + (offset + step) % size);
+  for (let step = 0; step < plan.length; step += 1) {
+    const index = (start + offset + step) % plan.length;
+    if (index < start || index >= end) order.push(index);
+  }
+  const unused = (ids) => !usedSetKeys.has(setKey(ids));
+  const fresh = (ids) => unused(ids) && ids.every((id) => byId.get(id).words.every((word) => !excludedWords.has(word)));
+  const candidates = order.map((index) => plan[index]);
+  const ids = candidates.find(fresh) || candidates.find(unused) || plan[start + offset];
   return ids.map((id, index) => ({ ...byId.get(id), difficulty: index + 1, color: GROUP_ORDER[index] }));
 }

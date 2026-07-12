@@ -4,6 +4,8 @@ A responsive, mobile-first daily Filipino history puzzle. SAYSAY launches as one
 
 The app generates a deterministic catalog of 1,000 conflict-free sets from its reviewed history-group bank. A player starts with one **New Full Set** try. Replacing a set spends one try, and every two correctly solved groups earns another try. Set selection becomes progressively harder as the player’s successful streak grows; difficulty is intentionally not exposed as a manual setting.
 
+Every replacement set is unique for the day: a set of 16 blocks the player has already been dealt is never dealt again, and none of the 16 blocks from the set the player last survived (won) can reappear in the next set. Selection prefers the streak-matched difficulty band and widens to the full catalog when needed; if the day’s bank cannot satisfy the word exclusion, it still guarantees a never-before-seen set.
+
 Players can use **Report inaccurate information** to prepare a contextual content report. Because v0.1 has no backend, the report opens the device share sheet and falls back to copying the report for sending through the user’s preferred channel.
 
 ## Run locally
@@ -50,7 +52,7 @@ Create a Pages project from this repository. Use no framework preset, no build c
 - `js/game.js` contains pure state-in/state-out logic and no browser APIs.
 - `js/ui.js` owns DOM rendering, events, time, network access, and sharing.
 - `js/storage.js` owns versioned local storage. Progress, active set, and New Full Set tries persist locally.
-- `js/game.js` generates the 1,000-set catalog, filters word conflicts, and selects progressively harder sets from streak-based bands.
+- `js/game.js` generates the 1,000-set catalog, filters word conflicts, and selects progressively harder sets from streak-based bands, skipping already-played sets and every word from the last survived set.
 - `js/i18n.js` owns user-facing strings and puzzle translation fallback.
 - The service worker precaches the shell and runtime-caches puzzle JSON. Offline replay works after a puzzle has been fetched once.
 
