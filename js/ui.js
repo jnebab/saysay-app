@@ -1,6 +1,6 @@
 import { adaptiveGroups, buildSetPlan, createGame, groupsFromIds, reshuffle, setKey, submitGuess, updateStats, validatePuzzle } from "./game.js";
 import { applyStaticLanguage, languages, puzzleText, t } from "./i18n.js";
-import { readStore, saveGame, saveLanguage, writeStore } from "./storage.js";
+import { readStore, recordSurvivedSet, saveGame, saveLanguage, writeStore } from "./storage.js";
 
 const gameRegion = document.querySelector("#game-region");
 const statusRegion = document.querySelector("#status-region");
@@ -54,17 +54,15 @@ function groupsForSet(setIndex, streak = store.stats.currentStreak, history = {}
   return adaptiveGroups(sourcePuzzle, setIndex, streak, setPlan, history);
 }
 
-function freshSetGame(setIndex = 0, tokens = 1, solvedBlocks = 0, history = {}) {
-  const survivedWords = history.survivedWords || [];
-  const usedSetKeys = history.usedSetKeys || [];
-  const groups = groupsForSet(setIndex, store.stats.currentStreak, { excludedWords: survivedWords, usedSetKeys });
+function freshSetGame(setIndex = 0, tokens = 1, solvedBlocks = 0, usedSetKeys = []) {
+  const groups = groupsForSet(setIndex, store.stats.currentStreak, { survivedWordSets: store.survivedSets, usedSetKeys });
   const active = { id: sourcePuzzle.id, date: sourcePuzzle.date, groups };
-  return { ...createGame(active), setIndex, adaptiveStreak: store.stats.currentStreak, groupIds: groups.map((group) => group.id), newSetTokens: tokens, solvedBlocks, survivedWords, usedSetKeys };
+  return { ...createGame(active), setIndex, adaptiveStreak: store.stats.currentStreak, groupIds: groups.map((group) => group.id), newSetTokens: tokens, solvedBlocks, usedSetKeys };
 }
 
 function restoreGame() {
   game = store.games[gameKey()] || freshSetGame();
-  game = { setIndex: 0, newSetTokens: 1, solvedBlocks: 0, survivedWords: [], usedSetKeys: [], ...game };
+  game = { setIndex: 0, newSetTokens: 1, solvedBlocks: 0, usedSetKeys: [], ...game };
   const catalog = sourcePuzzle
     ? groupsFromIds(sourcePuzzle, game.groupIds) || groupsForSet(game.setIndex, game.adaptiveStreak ?? store.stats.currentStreak)
     : [];
@@ -149,7 +147,9 @@ function persistGame() {
 }
 
 function finishIfNeeded(previousStatus) {
-  if (previousStatus === "playing" && game.status !== "playing" && !isFallback) {
+  if (previousStatus !== "playing" || game.status === "playing") return;
+  if (game.status === "won") store = recordSurvivedSet(store, puzzle.groups.flatMap((group) => group.words));
+  if (!isFallback) {
     store = { ...store, stats: updateStats(store.stats, game.status, puzzle.date) };
     writeStore(store);
   }
@@ -184,11 +184,8 @@ function onSubmit() {
 function loadNewSet() {
   if (game.newSetTokens < 1) return;
   const nextIndex = (game.setIndex + 1) % 1000;
-  const history = {
-    survivedWords: game.status === "won" ? puzzle.groups.flatMap((group) => group.words) : game.survivedWords || [],
-    usedSetKeys: [...new Set([...(game.usedSetKeys || []), setKey(game.groupIds || [])])].filter(Boolean),
-  };
-  game = freshSetGame(nextIndex, game.newSetTokens - 1, game.solvedBlocks, history);
+  const usedSetKeys = [...new Set([...(game.usedSetKeys || []), setKey(game.groupIds || [])])].filter(Boolean);
+  game = freshSetGame(nextIndex, game.newSetTokens - 1, game.solvedBlocks, usedSetKeys);
   puzzle = { id: sourcePuzzle.id, date: sourcePuzzle.date, groups: groupsFromIds(sourcePuzzle, game.groupIds) };
   selected.clear();
   expanded.clear();

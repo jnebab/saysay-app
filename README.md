@@ -4,7 +4,7 @@ A responsive, mobile-first daily Filipino history puzzle. SAYSAY launches as one
 
 The app generates a deterministic catalog of 1,000 conflict-free sets from its reviewed history-group bank. A player starts with one **New Full Set** try. Replacing a set spends one try, and every two correctly solved groups earns another try. Set selection becomes progressively harder as the player’s successful streak grows; difficulty is intentionally not exposed as a manual setting.
 
-Every replacement set is unique for the day: a set of 16 blocks the player has already been dealt is never dealt again, and none of the 16 blocks from the set the player last survived (won) can reappear in the next set. Selection prefers the streak-matched difficulty band and widens to the full catalog when needed; if the day’s bank cannot satisfy the word exclusion, it still guarantees a never-before-seen set.
+Every grid dealt in a day is unique down to the group: a group of 4 blocks that has appeared on any earlier grid that day — won, lost, or swapped away — is never dealt again. With the standard 24 groups plus the optional `extraGroups` bank (76 more), a day carries 100 groups, yielding **25 fully distinct grids** before any reuse is possible. Selection looks ahead so an early pick never strands conflicting groups and cuts the day short. On top of that, no block from a set the player survived (won) reappears in later sets, with that history kept in local storage across days (last 12 survived boards). When the bank cannot satisfy every constraint, the oldest history is forgiven first and a never-before-dealt board is still guaranteed.
 
 Players can use **Report inaccurate information** to prepare a contextual content report. Because v0.1 has no backend, the report opens the device share sheet and falls back to copying the report for sending through the user’s preferred channel.
 
@@ -26,7 +26,8 @@ Open `http://localhost:8000`. ES modules, puzzle fetches, and the service worker
 4. Add exactly four groups to each level, with difficulties 1–4 and colors `g1`–`g4`.
 5. Add exactly four unique words to each group. All sixteen words within a level must be unique.
 6. Add English and Filipino group names and facts.
-7. Add the puzzle to `puzzles/index.json`. Set `draft` to `false` only after editorial review.
+7. Optionally add an `extraGroups` array to deepen the day's bank: flat groups (no color/difficulty — those are assigned at deal time) each with a `level` of `easy`, `medium`, or `hard`, 4 unique words, and bilingual `name`/`fact`. The array length must be a multiple of 4. Each 4 extra groups buys one more guaranteed-unique grid: 24 + 76 extras = 25 grids.
+8. Add the puzzle to `puzzles/index.json`. Set `draft` to `false` only after editorial review.
 
 Difficulty/share mapping:
 
@@ -52,7 +53,7 @@ Create a Pages project from this repository. Use no framework preset, no build c
 - `js/game.js` contains pure state-in/state-out logic and no browser APIs.
 - `js/ui.js` owns DOM rendering, events, time, network access, and sharing.
 - `js/storage.js` owns versioned local storage. Progress, active set, and New Full Set tries persist locally.
-- `js/game.js` generates the 1,000-set catalog, filters word conflicts, and selects progressively harder sets from streak-based bands, skipping already-played sets and every word from the last survived set.
+- `js/game.js` generates the 1,000-set catalog, filters word conflicts, and selects progressively harder sets from streak-based bands, never re-dealing a group seen earlier that day and skipping every word from survived sets.
 - `js/i18n.js` owns user-facing strings and puzzle translation fallback.
 - The service worker precaches the shell and runtime-caches puzzle JSON. Offline replay works after a puzzle has been fetched once.
 

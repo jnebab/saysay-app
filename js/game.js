@@ -110,7 +110,11 @@ export function validatePuzzle(puzzle, expectedDate) {
       && colors.join() === GROUP_ORDER.join()
       && difficulties.join() === "1,2,3,4";
   };
-  return ["easy", "medium", "hard"].every((level) => validLevel(puzzle.levels[level]) && validLevel(puzzle.bonusLevels?.[level]));
+  const extra = puzzle.extraGroups ?? [];
+  const validExtra = Array.isArray(extra) && extra.length % 4 === 0
+    && extra.every((group) => group.words?.length === 4 && new Set(group.words).size === 4
+      && group.name?.en && group.fact?.en && LEVEL_RANK[group.level] !== undefined);
+  return validExtra && ["easy", "medium", "hard"].every((level) => validLevel(puzzle.levels[level]) && validLevel(puzzle.bonusLevels?.[level]));
 }
 
 export function buildGroupCatalog(puzzle) {
@@ -122,22 +126,55 @@ export function buildGroupCatalog(puzzle) {
       });
     }
   }
+  (puzzle.extraGroups || []).forEach((group, index) => {
+    catalog.push({ ...group, id: `extra-${index}`, rank: LEVEL_RANK[group.level] });
+  });
   return catalog;
+}
+
+function mulberry32(seed) {
+  let state = seed >>> 0;
+  return () => {
+    state = (state + 0x6d2b79f5) >>> 0;
+    let t = state;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
 }
 
 export function buildSetPlan(puzzle, count = 1000) {
   const catalog = buildGroupCatalog(puzzle);
   const candidates = [];
-  for (let a = 0; a < catalog.length - 3; a += 1) {
-    for (let b = a + 1; b < catalog.length - 2; b += 1) {
-      for (let c = b + 1; c < catalog.length - 1; c += 1) {
-        for (let d = c + 1; d < catalog.length; d += 1) {
-          const groups = [catalog[a], catalog[b], catalog[c], catalog[d]];
-          const words = groups.flatMap((group) => group.words);
-          if (new Set(words).size !== 16) continue;
-          candidates.push({ ids: groups.map((group) => group.id), score: groups.reduce((sum, group) => sum + group.rank, 0) });
+  const pushCandidate = (groups) => {
+    if (new Set(groups.flatMap((group) => group.words)).size !== 16) return;
+    candidates.push({ ids: groups.map((group) => group.id), score: groups.reduce((sum, group) => sum + group.rank, 0) });
+  };
+  if (catalog.length <= 32) {
+    for (let a = 0; a < catalog.length - 3; a += 1) {
+      for (let b = a + 1; b < catalog.length - 2; b += 1) {
+        for (let c = b + 1; c < catalog.length - 1; c += 1) {
+          for (let d = c + 1; d < catalog.length; d += 1) {
+            pushCandidate([catalog[a], catalog[b], catalog[c], catalog[d]]);
+          }
         }
       }
+    }
+  } else {
+    // Enumerating every combination of a large bank is too slow on load, so draw a
+    // deterministic sample instead. The seed is fixed, so every device builds the
+    // same plan for the same puzzle.
+    const random = mulberry32(catalog.length * 2654435761 + count);
+    const seen = new Set();
+    const target = count * 4;
+    for (let attempt = 0; attempt < target * 40 && candidates.length < target; attempt += 1) {
+      const picks = new Set();
+      while (picks.size < 4) picks.add(Math.floor(random() * catalog.length));
+      const indices = [...picks].sort((left, right) => left - right);
+      const key = indices.join("|");
+      if (seen.has(key)) continue;
+      seen.add(key);
+      pushCandidate(indices.map((index) => catalog[index]));
     }
   }
   candidates.sort((left, right) => left.score - right.score || left.ids.join().localeCompare(right.ids.join()));
@@ -159,8 +196,9 @@ export function groupsFromIds(puzzle, ids) {
 export function adaptiveGroups(puzzle, setNumber, streak, plan = buildSetPlan(puzzle), history = {}) {
   const catalog = buildGroupCatalog(puzzle);
   const byId = new Map(catalog.map((group) => [group.id, group]));
-  const excludedWords = new Set(history.excludedWords || []);
-  const usedSetKeys = new Set(history.usedSetKeys || []);
+  const survivedWordSets = history.survivedWordSets || [];
+  const usedSetKeys = history.usedSetKeys || [];
+  const usedKeySet = new Set(usedSetKeys);
   const tier = Math.min(2, Math.floor(Math.max(0, streak) / 3));
   const start = Math.floor(plan.length * tier / 3);
   const end = Math.floor(plan.length * (tier + 1) / 3);
@@ -171,9 +209,74 @@ export function adaptiveGroups(puzzle, setNumber, streak, plan = buildSetPlan(pu
     const index = (start + offset + step) % plan.length;
     if (index < start || index >= end) order.push(index);
   }
-  const unused = (ids) => !usedSetKeys.has(setKey(ids));
-  const fresh = (ids) => unused(ids) && ids.every((id) => byId.get(id).words.every((word) => !excludedWords.has(word)));
   const candidates = order.map((index) => plan[index]);
-  const ids = candidates.find(fresh) || candidates.find(unused) || plan[start + offset];
+  const wordsOf = (ids) => ids.flatMap((id) => byId.get(id).words);
+  const valid = (ids, usedGroups, excluded) => !usedKeySet.has(setKey(ids))
+    && ids.every((id) => !usedGroups.has(id))
+    && wordsOf(ids).every((word) => !excluded.has(word));
+
+  // Whether the given unused groups can still be dealt out as full word-valid
+  // boards, so a pick never strands conflicting groups together.
+  const partitionMemo = new Map();
+  const canPartition = (pool) => {
+    if (pool.length === 0) return true;
+    if (pool.length % 4) return true;
+    const memoKey = pool.join(",");
+    if (partitionMemo.has(memoKey)) return partitionMemo.get(memoKey);
+    const [head, ...rest] = pool;
+    let ok = false;
+    for (let a = 0; a < rest.length - 2 && !ok; a += 1) {
+      for (let b = a + 1; b < rest.length - 1 && !ok; b += 1) {
+        for (let c = b + 1; c < rest.length && !ok; c += 1) {
+          if (new Set(wordsOf([head, rest[a], rest[b], rest[c]])).size !== 16) continue;
+          ok = canPartition(rest.filter((_, index) => index !== a && index !== b && index !== c));
+        }
+      }
+    }
+    partitionMemo.set(memoKey, ok);
+    return ok;
+  };
+
+  const poolWithout = (usedGroups, ids) => catalog.filter((group) => !usedGroups.has(group.id) && !ids.includes(group.id)).map((group) => group.id);
+
+  // Exhaustive search over every combination of unused groups, so a conflict-free
+  // board is found whenever one exists even if the sampled plan missed it. Groups
+  // carrying an excluded word can never appear in a fitting board, so they are
+  // dropped before combinations are enumerated.
+  const searchPool = (usedGroups, excluded, fits) => {
+    const pool = catalog
+      .filter((group) => !usedGroups.has(group.id) && group.words.every((word) => !excluded.has(word)))
+      .map((group) => group.id);
+    for (let a = 0; a < pool.length - 3; a += 1) {
+      for (let b = a + 1; b < pool.length - 2; b += 1) {
+        for (let c = b + 1; c < pool.length - 1; c += 1) {
+          for (let d = c + 1; d < pool.length; d += 1) {
+            const ids = [pool[a], pool[b], pool[c], pool[d]];
+            if (new Set(wordsOf(ids)).size === 16 && fits(ids)) return ids;
+          }
+        }
+      }
+    }
+    return null;
+  };
+
+  // Never repeat a dealt group; on top of that, avoid every word from survived
+  // sets. Constraints relax in priority order: survived-word history drops
+  // oldest-first, then the partition lookahead, and dealt groups are forgiven
+  // (oldest boards first) only once the bank is truly exhausted.
+  let ids = null;
+  for (let dropKeys = 0; !ids && dropKeys <= usedSetKeys.length; dropKeys += 1) {
+    const usedGroups = new Set(usedSetKeys.slice(dropKeys).flatMap((key) => key.split("|")));
+    for (const lookahead of [true, false]) {
+      for (let dropWords = 0; !ids && dropWords <= survivedWordSets.length; dropWords += 1) {
+        const excluded = new Set(survivedWordSets.slice(dropWords).flat());
+        const fits = (candidate) => valid(candidate, usedGroups, excluded)
+          && (!lookahead || canPartition(poolWithout(usedGroups, candidate)));
+        ids = candidates.find(fits) || searchPool(usedGroups, excluded, fits);
+      }
+      if (ids) break;
+    }
+  }
+  ids = ids || plan[start + offset];
   return ids.map((id, index) => ({ ...byId.get(id), difficulty: index + 1, color: GROUP_ORDER[index] }));
 }

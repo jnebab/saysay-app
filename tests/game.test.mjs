@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { adaptiveGroups, buildSetPlan, createGame, classifyGuess, groupsFromIds, guessEmojis, setKey, submitGuess, updateStats, validatePuzzle } from "../js/game.js";
+import { adaptiveGroups, buildGroupCatalog, buildSetPlan, createGame, classifyGuess, groupsFromIds, guessEmojis, setKey, submitGuess, updateStats, validatePuzzle } from "../js/game.js";
 import { readFile } from "node:fs/promises";
 
 const puzzle = JSON.parse(await readFile(new URL("../puzzles/2026-07-11.json", import.meta.url)));
@@ -16,27 +16,42 @@ const rank = (groups) => groups.reduce((sum, group) => sum + group.rank, 0);
 assert.ok(rank(adaptiveGroups(puzzle, 17, 0, plan)) <= rank(adaptiveGroups(puzzle, 17, 3, plan)));
 assert.ok(rank(adaptiveGroups(puzzle, 17, 3, plan)) <= rank(adaptiveGroups(puzzle, 17, 6, plan)));
 
-// A survived set's 16 words never appear in the next set, and no set key ever repeats.
-for (const streak of [0, 3, 6]) {
-  let survivedWords = [];
-  const usedSetKeys = [];
-  for (let round = 0; round < 6; round += 1) {
-    const groups = adaptiveGroups(puzzle, round, streak, plan, { excludedWords: survivedWords, usedSetKeys });
-    const words = groups.flatMap((group) => group.words);
-    assert.equal(new Set(words).size, 16);
-    assert.ok(words.every((word) => !survivedWords.includes(word)), `round ${round} repeats a survived word`);
-    const key = setKey(groups.map((group) => group.id));
-    assert.ok(!usedSetKeys.includes(key), `round ${round} repeats set ${key}`);
-    usedSetKeys.push(key);
-    survivedWords = words;
+// No dealt group of 4 ever repeats within a day, whether boards are survived or
+// swapped away. The bank yields catalog/4 fully group-unique grids; the grid after
+// that (bank exhausted) still deals a valid, never-before-dealt board.
+const bankGrids = buildGroupCatalog(puzzle).length / 4;
+assert.equal(bankGrids, 25, "the daily bank should support 25 unique grids");
+for (const streak of [0, 6]) {
+  for (const survive of [false, true]) {
+    const survivedWordSets = [];
+    const usedSetKeys = [];
+    const seenGroups = new Set();
+    for (let round = 0; round < bankGrids + 1; round += 1) {
+      const groups = adaptiveGroups(puzzle, round, streak, plan, { survivedWordSets, usedSetKeys });
+      const words = groups.flatMap((group) => group.words);
+      assert.equal(new Set(words).size, 16);
+      const key = setKey(groups.map((group) => group.id));
+      assert.ok(!usedSetKeys.includes(key), `round ${round} deals an identical board`);
+      if (round < bankGrids) for (const group of groups) assert.ok(!seenGroups.has(group.id), `streak ${streak} survive ${survive}: round ${round} repeats group ${group.id}`);
+      groups.forEach((group) => seenGroups.add(group.id));
+      usedSetKeys.push(key);
+      if (survive) survivedWordSets.push(words);
+    }
+    assert.equal(seenGroups.size, bankGrids * 4, `${bankGrids} grids should consume the whole group bank`);
   }
 }
 
-// Even when every word is excluded, selection degrades gracefully to an unseen set.
+// Relaxation drops the oldest survived set first: with an impossible old exclusion,
+// the newest survived set must still be respected.
 const allWords = [...Object.values(puzzle.levels), ...Object.values(puzzle.bonusLevels)].flat().flatMap((group) => group.words);
+const newest = adaptiveGroups(puzzle, 0, 0, plan).flatMap((group) => group.words);
+const relaxed = adaptiveGroups(puzzle, 0, 0, plan, { survivedWordSets: [allWords, newest] });
+assert.ok(relaxed.flatMap((group) => group.words).every((word) => !newest.includes(word)), "relaxation dropped the newest survived set");
+
+// Even when every word is excluded, selection degrades gracefully to an unseen set.
 const seenKeys = [];
 for (let round = 0; round < 3; round += 1) {
-  const groups = adaptiveGroups(puzzle, 0, 0, plan, { excludedWords: allWords, usedSetKeys: seenKeys });
+  const groups = adaptiveGroups(puzzle, 0, 0, plan, { survivedWordSets: [allWords], usedSetKeys: seenKeys });
   assert.equal(groups.length, 4);
   const key = setKey(groups.map((group) => group.id));
   assert.ok(!seenKeys.includes(key));
